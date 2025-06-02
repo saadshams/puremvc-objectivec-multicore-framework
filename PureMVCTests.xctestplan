@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "6181E59C-11E8-4403-8357-1A141DC56FE2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:PureMVC.xcodeproj",
+        "identifier" : "A8095C8D2DEBBADB00C703AE",
+        "name" : "PureMVCTests"
+      }
+    }
+  ],
+  "version" : 1
+}
