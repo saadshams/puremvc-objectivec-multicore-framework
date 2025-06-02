@@ -35,6 +35,7 @@
 /* Begin PBXFileReference section */
 		A8095C412DEBB54D00C703AE /* libPureMVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPureMVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8095C8E2DEBBADB00C703AE /* PureMVCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PureMVCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A81889572DED7A44005EDEEA /* objective-c-xcode.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "objective-c-xcode.yml"; sourceTree = "<group>"; };
 		A89E240D2DEBDBE500F08995 /* PureMVCTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = PureMVCTests.xctestplan; sourceTree = "<group>"; };
 		A89E24112DEBEE7A00F08995 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A89E24122DEBEE8C00F08995 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		A8095C382DEBB54D00C703AE = {
 			isa = PBXGroup;
 			children = (
+				A81889592DED7A44005EDEEA /* .github */,
 				A8F497D62DED30B700C63CDE /* .gitignore */,
 				A89E24132DEBEEAA00F08995 /* LICENSE */,
 				A89E24122DEBEE8C00F08995 /* VERSION */,
@@ -95,6 +97,22 @@
 				A8095C8E2DEBBADB00C703AE /* PureMVCTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A81889582DED7A44005EDEEA /* workflows */ = {
+			isa = PBXGroup;
+			children = (
+				A81889572DED7A44005EDEEA /* objective-c-xcode.yml */,
+			);
+			path = workflows;
+			sourceTree = "<group>";
+		};
+		A81889592DED7A44005EDEEA /* .github */ = {
+			isa = PBXGroup;
+			children = (
+				A81889582DED7A44005EDEEA /* workflows */,
+			);
+			path = .github;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
