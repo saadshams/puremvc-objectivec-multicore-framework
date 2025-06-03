@@ -19,7 +19,8 @@
 - (void)testNameAccessor {
     id<IMediator> mediator = [Mediator mediator];
     
-    XCTAssertTrue([[mediator name] isEqualToString:[Mediator NAME]], @"Expecting [mediator name] == [Mediator NAME]");
+    XCTAssertEqualObjects(mediator.name, [Mediator NAME], @"Expecting mediator.name == [Mediator NAME]");
+
 }
 
 - (void)testViewAccessor {

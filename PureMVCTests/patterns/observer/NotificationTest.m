@@ -19,7 +19,7 @@
 - (void)testNameAccessors {
     id<INotification> notification = [Notification withName:@"TestNote"];
     
-    XCTAssertTrue([[notification name] isEqualToString:@"TestNote"], @"Expecting [notification name] == 'TestNote'");
+    XCTAssertEqualObjects(notification.name, @"TestNote", @"Expecting notification.name == 'TestNote'");
 }
 
 - (void)testBodyAccessors {
@@ -32,16 +32,18 @@
 - (void)testConstructor {
     id<INotification> notification = [Notification withName:@"TestNote" body:@(5) type:@"TestNoteType"];
     
-    XCTAssertTrue([[notification name] isEqualToString:@"TestNote"], @"Expecting [notification name] == 'TestNote'");
-    XCTAssertTrue([[notification body] intValue], @"Expecting [notification body] == 5");
-    XCTAssertTrue([[notification type] isEqualToString:@"TestNoteType"], @"Expecting [notification type] == 'TestNoteType'");
+    XCTAssertEqualObjects(notification.name, @"TestNote", @"Expecting notification.name == 'TestNote'");
+    XCTAssertTrue([notification.body intValue], @"Expecting [notification body] == 5");
+    
+    XCTAssertEqualObjects(notification.type, @"TestNoteType", @"Expecting notification.type == 'TestNoteType'");
+
 }
 
 - (void)testDescription {
     id<INotification> notification = [Notification withName:@"TestNote" body:@"1,3,5" type:@"TestType"];
     NSString *ts = @"Notification Name: TestNote\nBody: 1,3,5\nType: TestType";
     
-    XCTAssertTrue([[notification description] isEqualToString:ts], @"Expecting [note description] == '%@'", ts);
+    XCTAssertEqualObjects(notification.description, ts, @"Expecing note.description == ts");
 }
 
 @end

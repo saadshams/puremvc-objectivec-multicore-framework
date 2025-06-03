@@ -71,7 +71,8 @@ static NSInteger viewTestVar = 0;
     XCTAssertNotNil(mediator, @"Mediator should not be nil");
     XCTAssertTrue([(NSObject *)mediator isKindOfClass:[ViewTestMediator class]], @"Expecting mediator type is ViewTestMediator");
     
-    XCTAssertTrue([mediator.name isEqualToString:ViewTestMediator.NAME], @"Expecting mediator.name == ViewTestMediator.NAME");
+    XCTAssertEqualObjects(mediator.name, [ViewTestMediator NAME], @"Expecting mediator.name == ViewTestMediator.NAME");
+
 }
 
 

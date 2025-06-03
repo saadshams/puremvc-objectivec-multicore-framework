@@ -48,8 +48,8 @@
     
     id<IProxy> removedProxy = [model removeProxy:@"sizes"];
     
-    XCTAssertTrue([[removedProxy name] isEqualToString:@"sizes"], "Expecting [proxy name] == 'sizes'");
-    
+    XCTAssertEqualObjects(removedProxy.name, @"sizes", @"Expecting removedProxy.name == 'sizes'");
+
     proxy = [model retrieveProxy:@"sizes"];
     XCTAssertNil(proxy, @"Expecting proxy is nil");
 }
@@ -72,11 +72,13 @@
     id<IProxy> proxy = [ModelTestProxy proxy];
     [model registerProxy:proxy];
     
-    XCTAssertTrue([proxy.data isEqualToString:[ModelTestProxy ON_REGISTER_CALLED]], @"Expecting proxy.data == [ModelTestProxy ON_REGISTER_CALLED");
+    XCTAssertEqualObjects(proxy.data, [ModelTestProxy ON_REGISTER_CALLED], @"Expecting proxy.data == [ModelTestProxy ON_REGISTER_CALLED]");
+
     
     [model removeProxy:proxy.name];
-    
+        
     XCTAssertTrue([proxy.data isEqualToString:[ModelTestProxy ON_REMOVE_CALLED]], @"Expecting proxy.data == [ModelTestProxy ON_REMOVE_CALLED");
+
 }
 
 @end
