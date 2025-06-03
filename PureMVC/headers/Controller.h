@@ -1,22 +1,22 @@
 //
-//  Model.h
+//  Controller.h
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the BSD 3-Clause License
 //
 
-#ifndef Model_h
-#define Model_h
+#ifndef Controller_h
+#define Controller_h
 
 #import <Foundation/Foundation.h>
-#import "IModel.h"
+#import "IController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Model : NSObject <IModel>
+@interface Controller : NSObject <IController>
 
-+ (id<IModel>) getInstance:(NSString *)key factory:(id<IModel> (^)(NSString *key))factory;
++ (id<IController>) getInstance:(NSString *)key factory:(id<IController> (^)(NSString *key))factory;
 + (void) removeModel:(NSString *)key;
 + (instancetype) withKey:(NSString *)key;
 
@@ -26,4 +26,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif /* Model_h */
+#endif /* Controller_h */

@@ -21,6 +21,7 @@
 
 - (void)testGetInstance {
     id<IModel> model = [Model getInstance:@"ModelTestKey1" factory:^(NSString *key) { return [Model withKey:key]; }];
+    // id<IModel> model = [Model getInstance:@"ModelTestKey1" factory:(id<IModel> (^)(NSString *))^(NSString *key) { return [Model withKey:key]; }];
     
     XCTAssertNotNil(model, @"Expecting instance not nil");
     XCTAssertTrue([(id)model conformsToProtocol:@protocol(IModel)], @"Expecting instance implements IModel");
@@ -58,7 +59,7 @@
     id<IProxy> proxy = [Proxy withName:@"aces" data:@[@"clubs", @"spades", @"hearts", @"diamonds"]];
     [model registerProxy:proxy];
     
-    XCTAssertTrue([model hasProxy:@"aces"] == true, @"Expecting [model hasProxy('aces')] == true");
+    XCTAssertTrue([model hasProxy:@"aces"], @"Expecting [model hasProxy('aces')]");
     
     [model removeProxy:@"aces"];
     

@@ -12,9 +12,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Model()
+
 @property (nonatomic, copy, readonly) NSString *multitonKey;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, id<IProxy>> *proxyMap;
 @property (nonatomic, strong) dispatch_queue_t proxyMapQueue;
+
 @end
 
 static NSMutableDictionary<NSString *, id<IModel>> *instanceMap = nil;
@@ -25,10 +27,6 @@ static void initialize(void) {
 }
 
 @implementation Model
-
-+ (instancetype)withKey:(NSString *)key {
-    return [[Model alloc] initWithKey:key];
-}
 
 + (id<IModel>)getInstance:(NSString *)key factory:(id<IModel> (^)(NSString *key))factory {
     @synchronized (instanceMap) {
@@ -43,6 +41,10 @@ static void initialize(void) {
     @synchronized (instanceMap) {
         [instanceMap removeObjectForKey:key];
     }
+}
+
++ (instancetype)withKey:(NSString *)key {
+    return [[Model alloc] initWithKey:key];
 }
 
 - (instancetype)initWithKey:(NSString *)key {
@@ -65,7 +67,7 @@ static void initialize(void) {
     [proxy onRegister];
 }
 
-- (id<IProxy>)retrieveProxy:(NSString *)proxyName {
+- (nullable id<IProxy>)retrieveProxy:(NSString *)proxyName {
     __block id<IProxy> proxy = nil;
     dispatch_sync(self.proxyMapQueue, ^{
         proxy = self.proxyMap[proxyName];
@@ -76,20 +78,20 @@ static void initialize(void) {
 - (BOOL)hasProxy:(NSString *)proxyName {
     __block BOOL exists = NO;
     dispatch_sync(self.proxyMapQueue, ^{
-         exists = [self.proxyMap objectForKey:proxyName] != nil;
+         exists = self.proxyMap[proxyName] != nil;
     });
     return exists;
 }
 
-- (id<IProxy>)removeProxy:(NSString *)proxyName {
-    __block id<IProxy> removed = nil;
+- (nullable id<IProxy>)removeProxy:(NSString *)proxyName {
+    __block id<IProxy> proxy = nil;
     dispatch_barrier_sync(self.proxyMapQueue, ^{
-        removed = self.proxyMap[proxyName];
-        [self.proxyMap removeObjectForKey:proxyName];
+        proxy = self.proxyMap[proxyName];
+        self.proxyMap[proxyName] = nil;
     });
     
-    [removed onRemove];
-    return removed;
+    [proxy onRemove];
+    return proxy;
 }
 
 @end

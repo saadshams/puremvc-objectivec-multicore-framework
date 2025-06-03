@@ -1,5 +1,5 @@
 //
-//  NotificationTests.m
+//  NotificationTest.m
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
@@ -10,11 +10,11 @@
 #import "INotification.h"
 #import "Notification.h"
 
-@interface NotificationTests : XCTestCase
+@interface NotificationTest : XCTestCase
 
 @end
 
-@implementation NotificationTests
+@implementation NotificationTest
 
 - (void)testNameAccessors {
     id<INotification> notification = [Notification withName:@"TestNote"];

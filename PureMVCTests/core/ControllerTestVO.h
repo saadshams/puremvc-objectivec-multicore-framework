@@ -1,23 +1,22 @@
 //
-//  MacroCommandTestVO.h
+//  ControllerTestVO.h
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the BSD 3-Clause License
 //
 
-#ifndef MacroCommandTestVO_h
-#define MacroCommandTestVO_h
+#ifndef ControllerTestVO_h
+#define ControllerTestVO_h
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MacroCommandTestVO : NSObject
+@interface ControllerTestVO : NSObject
 
 @property (nonatomic)int input;
-@property (nonatomic)int result1;
-@property (nonatomic)int result2;
+@property (nonatomic)int result;
 
 - (instancetype)initWithInput:(int)input;
 
@@ -25,4 +24,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif /* MacroCommandTestVO_h */
+#endif /* ControllerTestVO_h */

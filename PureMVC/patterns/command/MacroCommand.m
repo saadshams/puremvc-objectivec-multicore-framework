@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)execute:(id<INotification>)notification {
     while (self.subCommands.count > 0) {
-        id<ICommand> (^factory)(void) = [self.subCommands firstObject];
+        id<ICommand> (^factory)(void) = self.subCommands[0];
         [self.subCommands removeObjectAtIndex:0];
         
         id command = factory();

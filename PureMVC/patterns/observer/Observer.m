@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)notifyObserver:(id<INotification>)notification {
-    if (self.notify && [self.context respondsToSelector:_notify]) {
+    if (self.notify && [self.context respondsToSelector:self.notify]) {
         // Suppress "performSelector may cause leak" warning
         #pragma clang diagnostic push
         #pragma clang diagnostic ignored "-Warc-performSelector-leaks"

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Mediator.h"
+#import "INotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -44,6 +45,14 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 - (void)onRemove {
+    
+}
+
+- (NSArray *)listNotificationInterests {
+    return @[];
+}
+
+- (void)handleNotification:(id<INotification>)notification {
     
 }
 

@@ -1,5 +1,5 @@
 //
-//  ProxyTests.m
+//  ProxyTest.m
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
@@ -10,11 +10,11 @@
 #import "IProxy.h"
 #import "Proxy.h"
 
-@interface PureMVCTests : XCTestCase
+@interface PureMVCTest : XCTestCase
 
 @end
 
-@implementation PureMVCTests
+@implementation PureMVCTest
 
 - (void)testNameAccessor {
     id<IProxy> proxy = [Proxy withName:@"TestProxy"];

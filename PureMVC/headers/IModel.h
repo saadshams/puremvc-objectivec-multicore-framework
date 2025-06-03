@@ -18,11 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)registerProxy:(id<IProxy>)proxy;
 
-- (id<IProxy>)retrieveProxy:(NSString *)proxyName;
+- (nullable id<IProxy>)retrieveProxy:(NSString *)proxyName;
 
 - (BOOL)hasProxy:(NSString *)proxyName;
 
-- (id<IProxy>)removeProxy:(NSString *)proxyName;
+- (nullable id<IProxy>)removeProxy:(NSString *)proxyName;
 
 @end
 

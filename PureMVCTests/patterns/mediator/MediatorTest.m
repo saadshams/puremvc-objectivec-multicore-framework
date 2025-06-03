@@ -1,5 +1,5 @@
 //
-//  MediatorTests.m
+//  MediatorTest.m
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
@@ -10,11 +10,11 @@
 #import "IMediator.h"
 #import "Mediator.h"
 
-@interface MediatorTests : XCTestCase
+@interface MediatorTest : XCTestCase
 
 @end
 
-@implementation MediatorTests
+@implementation MediatorTest
 
 - (void)testNameAccessor {
     id<IMediator> mediator = [Mediator mediator];

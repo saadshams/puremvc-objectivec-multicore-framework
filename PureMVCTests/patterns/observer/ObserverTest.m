@@ -1,5 +1,5 @@
 //
-//  ObserverTests.m
+//  ObserverTest.m
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
@@ -12,13 +12,13 @@
 #import "INotification.h"
 #import "Notification.h"
 
-@interface ObserverTests : XCTestCase
+@interface ObserverTest : XCTestCase
 
 @end
 
 static NSInteger observerTestVar = 0;
 
-@implementation ObserverTests
+@implementation ObserverTest
 
 - (void)observerTestMethod:(id<INotification>)notification {
     observerTestVar = [(NSNumber *)notification.body integerValue];
@@ -50,7 +50,7 @@ static NSInteger observerTestVar = 0;
     NSObject *negTestObject = [[NSObject alloc] init];
     
     XCTAssertFalse([observer compareNotifyContext:negTestObject], @"[observer compareNotifyContext:negTestObject] == false");
-    XCTAssertTrue([observer compareNotifyContext:self], @"[observer compareNotifyContext:self] == true");
+    XCTAssertTrue([observer compareNotifyContext:self], @"[observer compareNotifyContext:self]");
 }
 
 @end

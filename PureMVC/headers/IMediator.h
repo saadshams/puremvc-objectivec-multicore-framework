@@ -10,6 +10,7 @@
 #define IMediator_h
 
 #import <Foundation/Foundation.h>
+#import "INotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,6 +22,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onRegister;
 
 - (void)onRemove;
+
+- (NSArray *)listNotificationInterests;
+
+- (void)handleNotification:(id<INotification>)notification;
 
 @end
 
