@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
     
 }
 
-- (NSArray *)listNotificationInterests {
+- (NSArray<NSString *> *)listNotificationInterests {
     return @[];
 }
 

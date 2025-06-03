@@ -13,6 +13,7 @@
 #import "Observer.h"
 #import "INotification.h"
 #import "Notification.h"
+#import "ViewTestMediator.h"
 
 @interface ViewTest : XCTestCase
 
@@ -62,8 +63,15 @@ static NSInteger viewTestVar = 0;
 - (void)testRegisterAndRetrieveMediator {
     id<IView> view = [View getInstance:@"ViewTestKey3" factory:^(NSString *key) { return [View withKey:key]; }];
     
+    ViewTestMediator *viewTestMediator = [ViewTestMediator withName:ViewTestMediator.NAME];
+    [view registerMediator:viewTestMediator];
     
-
+    id<IMediator> mediator = [view retrieveMediator:ViewTestMediator.NAME];
+    
+    XCTAssertNotNil(mediator, @"Mediator should not be nil");
+    XCTAssertTrue([(NSObject *)mediator isKindOfClass:[ViewTestMediator class]], @"Expecting mediator type is ViewTestMediator");
+    
+    XCTAssertTrue([mediator.name isEqualToString:ViewTestMediator.NAME], @"Expecting mediator.name == ViewTestMediator.NAME");
 }
 
 

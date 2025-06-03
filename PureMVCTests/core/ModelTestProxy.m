@@ -16,11 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)ON_REGISTER_CALLED { return @"onRegister called"; }
 + (NSString *)ON_REMOVE_CALLED { return @"onRemove called"; }
 
-- (instancetype)init {
-    self = [super initWithName:[ModelTestProxy NAME] data:@""];
-    return self;
-}
-
 - (void)onRegister {
     self.data = [ModelTestProxy ON_REGISTER_CALLED];
 }

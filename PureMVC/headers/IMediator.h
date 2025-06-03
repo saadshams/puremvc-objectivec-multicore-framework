@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)onRemove;
 
-- (NSArray *)listNotificationInterests;
+- (NSArray<NSString *> *)listNotificationInterests;
 
 - (void)handleNotification:(id<INotification>)notification;
 
