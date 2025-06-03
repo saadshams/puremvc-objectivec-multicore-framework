@@ -146,7 +146,7 @@ static void initialize(void) {
     __block id<IMediator> mediator = nil;
     dispatch_barrier_sync(self.mediatorMapQueue, ^{
         mediator = self.mediatorMap[mediatorName];
-        self.mediatorMap[mediatorName] = nil;
+        [self.mediatorMap removeObjectForKey:mediatorName];
     });
     
     if (mediator == nil) return nil;

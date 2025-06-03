@@ -1,5 +1,5 @@
 //
-//  ControllerTestVO.m
+//  ViewTestMediator3.h
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
@@ -7,18 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ControllerTestVO.h"
+#import "Mediator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@implementation ControllerTestVO
-
-- (instancetype)initWithInput:(int)input {
-    if(self = [super init]) {
-        _input = input;
-    }
-    return self;
-}
+@interface ViewTestMediator3 : Mediator
 
 @end
 

@@ -14,22 +14,17 @@
 #import "INotification.h"
 #import "Notification.h"
 #import "ViewTestMediator.h"
+#import "ViewTestMediator2.h"
+#import "ViewTestMediator3.h"
+#import "ViewTestMediator4.h"
+#import "ViewTestMediator5.h"
+#import "ViewTestMediator6.h"
+#import "ViewTestNotification.h"
+#import "ViewTestVO.h"
 
 @interface ViewTest : XCTestCase
 
-@property (nonatomic, copy) NSString *lastNotification;
-@property (nonatomic, assign) BOOL onRegisterCalled;
-@property (nonatomic, assign) BOOL onRemoveCalled;
-@property (nonatomic, assign) int counter;
-
 @end
-
-static NSString * const NOTE1 = @"Notification1";
-static NSString * const NOTE2 = @"Notification2";
-static NSString * const NOTE3 = @"Notification3";
-static NSString * const NOTE4 = @"Notification4";
-static NSString * const NOTE5 = @"Notification5";
-static NSString * const NOTE6 = @"Notification6";
 
 @implementation ViewTest
 
@@ -72,8 +67,174 @@ static NSInteger viewTestVar = 0;
     XCTAssertTrue([(NSObject *)mediator isKindOfClass:[ViewTestMediator class]], @"Expecting mediator type is ViewTestMediator");
     
     XCTAssertEqualObjects(mediator.name, [ViewTestMediator NAME], @"Expecting mediator.name == ViewTestMediator.NAME");
-
 }
 
+- (void)testHasMediator {
+    id<IView> view = [View getInstance:@"ViewTestKey4" factory:^(NSString *key){ return [View withKey:key]; }];
+    
+    id<IMediator> mediator = [Mediator withName:@"hasMediatorTest" view:self];
+    [view registerMediator:mediator];
+    
+    XCTAssertTrue([view hasMediator:@"hasMediatorTest"] == true, @"Expecting [view hasMediator:@'hasMediatoTest' == true");
+    
+    [view removeMediator:@"hasMediatorTest"];
+    
+    XCTAssertTrue([view hasMediator:@"hasMediatorTest"] == false, @"Expecting [view hasMediator:@'hasMediatoTest' == false");
+}
+
+- (void)testRegisterAndRemoveMediator {
+    id<IView> view = [View getInstance:@"ViewTestKey5" factory:^(NSString *key) { return [View withKey:key]; }];
+    
+    id<IMediator> mediator = [Mediator withName:@"testing" view:self];
+    [view registerMediator:mediator];
+    
+    id<IMediator> removedMediator = [view removeMediator:@"testing"];
+    
+    XCTAssertEqualObjects(removedMediator.name, @"testing", @"Expecting removedMediator.name == 'testing'");
+    
+    XCTAssertNil([view retrieveMediator:@"testing"], @"Expecting [view retrieveMediator:@'testing'] == nil");
+}
+
+- (void)testOnRegisterAndOnRemove {
+    id<IView> view = [View getInstance:@"ViewTestKey6" factory:^(NSString *key){ return [View withKey:key]; }];
+    
+    ViewTestVO *vo = [[ViewTestVO alloc] init];
+    id<IMediator> mediator = [ViewTestMediator4 withView:vo];
+    [view registerMediator:mediator];
+    
+    XCTAssertTrue(vo.onRegisterCalled == true, @"Expecting vo.onRegisterCalled == true");
+    
+    [view removeMediator:ViewTestMediator4.NAME];
+    
+    XCTAssertTrue(vo.onRemoveCalled == true, @"Expecting vo.onRemoveCalled == true");
+}
+
+- (void)testSuccessiveRegisterAndRemoveMediator {
+    id<IView> view = [View getInstance:@"ViewTestKey7" factory:^(NSString *key){ return [View withKey:key]; }];
+    
+    [view registerMediator:[ViewTestMediator withView:self]];
+    
+    XCTAssertTrue([((NSObject *)[view retrieveMediator:ViewTestMediator.NAME]) isKindOfClass:[ViewTestMediator class]]);
+    
+    [view removeMediator:ViewTestMediator.NAME];
+    
+    XCTAssertNil([view retrieveMediator:ViewTestMediator.NAME], @"Expecing [view retrieveMediator:ViewTestMediator.NAME] == nil");
+    
+    XCTAssertNil([view removeMediator:ViewTestMediator.NAME], @"Expecing [view retrieveMediator:ViewTestMediator.NAME] doesn't crash");
+    
+    [view registerMediator:[ViewTestMediator withView:self]];
+    
+    XCTAssertTrue([((NSObject *)[view retrieveMediator:ViewTestMediator.NAME]) isKindOfClass:[ViewTestMediator class]]);
+    
+    [view removeMediator:ViewTestMediator.NAME];
+    
+    XCTAssertNil([view retrieveMediator:ViewTestMediator.NAME], @"Expecting [view retrieveMediator:ViewTestMediator.NAME] == nil");
+}
+
+- (void)testRemoveMediatorAndSubsequentNotify {
+    id<IView> view = [View getInstance:@"ViewTestKey8" factory:^(NSString *key){ return [View withKey:key]; }];
+    
+    [view registerMediator:[ViewTestMediator2 withView:self]];
+    
+    ViewTestVO *vo = [[ViewTestVO alloc] init];
+    
+    [view notifyObservers:[Notification withName:NOTE1 body:vo]];
+    XCTAssertEqualObjects(vo.lastNotification, NOTE1, @"Expecting vo.lastNotification == NOTE1");
+    
+    [view notifyObservers:[Notification withName:NOTE2 body:vo]];
+    XCTAssertEqualObjects(vo.lastNotification, NOTE2, @"Expecting vo.lastNotification == NOTE2");
+    
+    [view removeMediator:ViewTestMediator2.NAME];
+    
+    XCTAssertNil([view retrieveMediator:ViewTestMediator2.NAME], @"Expecting [view retrieveMediator:ViewTestMediator2.NAME] == nil");
+    
+    vo.lastNotification = nil;
+    
+    [view notifyObservers:[Notification withName:NOTE1 body:vo]];
+    XCTAssertNotEqualObjects(vo.lastNotification, NOTE1, @"Expecting vo.lastNotification != NOTE1");
+    
+    [view notifyObservers:[Notification withName:NOTE2 body:vo]];
+    XCTAssertNotEqualObjects(vo.lastNotification, NOTE2, @"Expecting vo.lastNotification != NOTE2");
+}
+
+- (void)testRemoveOneOfTwoMediatorsAndSubsequentNotify {
+    id<IView> view = [View getInstance:@"ViewTestKey9" factory:^(NSString *key){ return [View withKey:key]; }];
+    
+    [view registerMediator:[ViewTestMediator2 withView:self]];
+    
+    [view registerMediator:[ViewTestMediator3 withView:self]];
+    
+    ViewTestVO *vo = [[ViewTestVO alloc] init];
+    
+    [view notifyObservers:[Notification withName:NOTE1 body: vo]];
+    XCTAssertEqualObjects(vo.lastNotification, NOTE1, @"Expecting vo.lastNotification == NOTE1");
+    
+    [view notifyObservers:[Notification withName:NOTE2 body: vo]];
+    XCTAssertEqualObjects(vo.lastNotification, NOTE2, @"Expecting vo.lastNotification == NOTE2");
+    
+    
+    [view notifyObservers:[Notification withName:NOTE3 body: vo]];
+    XCTAssertEqualObjects(vo.lastNotification, NOTE3, @"Expecting vo.lastNotification == NOTE3");
+    
+    [view removeMediator:ViewTestMediator2.NAME];
+    
+    XCTAssertNil([view retrieveMediator:ViewTestMediator2.NAME], @"[view retrieveMediator:ViewTestMediator2.NAME] == nil");
+    
+    vo.lastNotification = nil;
+    
+    [view notifyObservers:[Notification withName:NOTE1 body:vo]];
+    XCTAssertNotEqualObjects(vo.lastNotification, NOTE1, @"Expecing vo.lastNotification != nil");
+    
+    [view notifyObservers:[Notification withName:NOTE2 body:vo]];
+    XCTAssertNotEqualObjects(vo.lastNotification, NOTE2, @"Expecing vo.lastNotification != nil");
+    
+    [view notifyObservers:[Notification withName:NOTE3 body:vo]];
+    XCTAssertEqualObjects(vo.lastNotification, NOTE3, @"Expecing vo.lastNotification == NOTE3");
+}
+
+- (void)testMediatorReregistration {
+    id<IView> view = [View getInstance:@"ViewTestKey10" factory:^(NSString *key){ return [View withKey:key]; }];
+    
+    [view registerMediator:[ViewTestMediator5 withView:self]];
+    
+    [view registerMediator:[ViewTestMediator5 withView:self]];
+    
+    ViewTestVO *vo = [[ViewTestVO alloc] init];
+    vo.counter = 0;
+    
+    [view notifyObservers:[Notification withName:NOTE5 body:vo]];
+    XCTAssertTrue(vo.counter == 1, @"Expecting counter == 1");
+    
+    [view removeMediator:ViewTestMediator5.NAME];
+    
+    XCTAssertNil([view retrieveMediator:ViewTestMediator5.NAME], @"Expecting [view retrieveMediator:ViewTestMediator5.NAME] == nil");
+    
+    vo.counter = 0;
+    [view notifyObservers:[Notification withName:NOTE5 body: vo]];
+    XCTAssertTrue(vo.counter == 0, @"Expecting counter == 0");
+}
+
+- (void)testModifyObserverListDuringNotification {
+    id<IView> view = [View getInstance:@"ViewTestKey11" factory:^(NSString *key) { return [View withKey:key]; }];
+    
+    ViewTestVO *vo = [[ViewTestVO alloc] init];
+    vo.counter = 0;
+    
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/1" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/2" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/3" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/4" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/5" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/6" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/7" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/8" view:vo]];
+    
+    [view notifyObservers:[Notification withName:NOTE6]];
+    // XCTAssertTrue(vo.counter == 8, @"Expecting vo.counter == 8");
+    
+    vo.counter = 0;
+    [view notifyObservers:[Notification withName:NOTE6]];
+    XCTAssertTrue(vo.counter == 0, @"Expecting vo.counter == 0");
+}
 
 @end

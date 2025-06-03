@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ControllerTestVO : NSObject
 
-@property (nonatomic)int input;
-@property (nonatomic)int result;
+@property (nonatomic, assign, readonly) int input;
+@property (nonatomic, assign) int result;
 
 - (instancetype)initWithInput:(int)input;
 

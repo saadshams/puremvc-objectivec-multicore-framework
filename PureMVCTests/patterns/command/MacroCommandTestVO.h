@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MacroCommandTestVO : NSObject
 
-@property (nonatomic)int input;
-@property (nonatomic)int result1;
-@property (nonatomic)int result2;
+@property (nonatomic, assign, readonly) int input;
+@property (nonatomic, assign) int result1;
+@property (nonatomic, assign) int result2;
 
 - (instancetype)initWithInput:(int)input;
 

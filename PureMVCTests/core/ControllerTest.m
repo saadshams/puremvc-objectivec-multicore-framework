@@ -13,6 +13,8 @@
 #import "SimpleCommand.h"
 #import "INotification.h"
 #import "Notification.h"
+#import "IView.h"
+#import "View.h"
 #import "ControllerTestCommand.h"
 #import "ControllerTestCommand2.h"
 #import "ControllerTestVO.h"
@@ -74,17 +76,21 @@
 }
 
 - (void)testReregisterAndExecuteCommand {
-//    id<IController> controller = [Controller getInstance:@"ControllerTestKey5" factory:^(NSString *key) { return [Controller withKey:key]; }];
-//    [controller registerCommand:@"ControllerTest2" factory:^(){return [ControllerTestCommand command]; }];
-//    
-//    [controller removeCommand:@"ControllerTest2"];
-//    
-//    [controller registerCommand:@"ControllerTest2" factory:^() { return [ControllerTestCommand command]; }];
-//    
-//    ControllerTestVO *vo = [[ControllerTestVO alloc] initWithInput:12];
-//    id<INotification> notification = [Notification withName:@"ControllerTest2" body:vo];
+    id<IController> controller = [Controller getInstance:@"ControllerTestKey5" factory:^(NSString *key) { return [Controller withKey:key]; }];
     
-    // todo:
+    [controller registerCommand:@"ControllerTest2" factory:^(){ return [ControllerTestCommand command]; }];
+    
+    [controller removeCommand:@"ControllerTest2"];
+    
+    [controller registerCommand:@"ControllerTest2" factory:^(){ return [ControllerTestCommand command]; }];
+    
+    ControllerTestVO *vo = [[ControllerTestVO alloc] initWithInput:12];
+    id<INotification> notification = [Notification withName:@"ControllerTest2" body:vo];
+
+    id<IView> view = [View getInstance:@"ControllerTestKey5" factory:^(NSString *key) { return [View withKey:key]; }];
+    [view notifyObservers:notification];
+    
+    XCTAssertTrue(vo.result == 24, @"Expecting vo.result == 24");
 }
 
 @end

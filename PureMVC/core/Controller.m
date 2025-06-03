@@ -12,6 +12,8 @@
 #import "ICommand.h"
 #import "IObserver.h"
 #import "Observer.h"
+#import "IView.h"
+#import "View.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *multitonKey;
 @property (nonatomic, strong) NSMutableDictionary<NSString *, id<ICommand> (^)(void)> *commandMap;
 @property (nonatomic, strong) dispatch_queue_t commandMapQueue;
+@property (nonatomic, strong, nullable) id<IView> view;
 
 @end
 
@@ -60,14 +63,19 @@ static void initialize(void) {
         _commandMap = [NSMutableDictionary dictionary];
         _commandMapQueue = dispatch_queue_create("org.puremvc.controller.proxyMapQueue", DISPATCH_QUEUE_CONCURRENT);
     }
+    [self initializeController];
     return self;
+}
+
+- (void)initializeController {
+    self.view = [View getInstance:self.multitonKey factory:^(NSString *key){ return [View withKey:key]; }];
 }
 
 - (void)registerCommand:(NSString *)notificationName factory:(id<ICommand> (^)(void))factory {
     dispatch_barrier_sync(self.commandMapQueue, ^{
-        if (!_commandMap[notificationName]) {
-            // id<IObserver> observer = [Observer withNotify:@selector(execute:) context: self];
-            // [view registerObserver:notificationName observer: observer]
+        if (self.commandMap[notificationName] == nil) {
+            id<IObserver> observer = [Observer withNotify:@selector(executeCommand:) context: self];
+            [self.view registerObserver:notificationName observer:observer];
         }
         [self.commandMap setObject:factory forKey:notificationName];
     });
@@ -95,8 +103,8 @@ static void initialize(void) {
 - (void)removeCommand:(NSString *)notificationName {
     dispatch_barrier_sync(self.commandMapQueue, ^{
         if (self.commandMap[notificationName] != nil) {
-            //[view removeObserver:notificationName context: self];
-            self.commandMap[notificationName] = nil;
+            [self.view removeObserver:notificationName context:self];
+            [self.commandMap removeObjectForKey:notificationName];
         }
     });
 }

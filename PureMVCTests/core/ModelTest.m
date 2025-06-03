@@ -73,7 +73,6 @@
     [model registerProxy:proxy];
     
     XCTAssertEqualObjects(proxy.data, [ModelTestProxy ON_REGISTER_CALLED], @"Expecting proxy.data == [ModelTestProxy ON_REGISTER_CALLED]");
-
     
     [model removeProxy:proxy.name];
         

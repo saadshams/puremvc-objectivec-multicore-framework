@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)execute:(id<INotification>)notification {
     ControllerTestVO *vo = notification.body;
-    
     vo.result = 2 * vo.input;
 }
 
