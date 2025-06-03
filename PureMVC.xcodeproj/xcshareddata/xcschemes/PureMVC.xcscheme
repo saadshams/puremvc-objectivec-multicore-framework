@@ -21,6 +21,20 @@
                ReferencedContainer = "container:PureMVC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A8095C8D2DEBBADB00C703AE"
+               BuildableName = "PureMVCTests.xctest"
+               BlueprintName = "PureMVCTests"
+               ReferencedContainer = "container:PureMVC.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -30,7 +44,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:PureMVCTests.xctestplan"
+            reference = "container:PureMVCTests/PureMVCTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

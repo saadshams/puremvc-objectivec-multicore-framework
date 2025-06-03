@@ -14,7 +14,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:PureMVCTests.xctestplan"
+            reference = "container:PureMVCTests/PureMVCTests.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
