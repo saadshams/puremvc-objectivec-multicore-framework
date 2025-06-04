@@ -13,7 +13,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation Observer
 
-// Static Convienence Constructor
 + (instancetype)withNotify:(nullable SEL)notify context:(nullable id)context {
     return [[self alloc] initWithNotify:notify context:context];
 }
