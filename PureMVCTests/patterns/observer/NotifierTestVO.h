@@ -1,19 +1,19 @@
 //
-//  FacadeTestVO.h
+//  NotifierTestVO.h
 //  PureMVC Objective-C Multicore
 //
 //  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
 //  Your reuse is governed by the BSD 3-Clause License
 //
 
-#ifndef FacadeTestVO_h
-#define FacadeTestVO_h
+#ifndef NotifierTestVO_h
+#define NotifierTestVO_h
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface FacadeTestVO : NSObject
+@interface NotifierTestVO : NSObject
 
 @property (nonatomic, assign, readonly) int input;
 @property (nonatomic, assign) int result;
@@ -24,4 +24,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 NS_ASSUME_NONNULL_END
 
-#endif /* FacadeTestVO_h */
+#endif /* NotifierTestVO_h */

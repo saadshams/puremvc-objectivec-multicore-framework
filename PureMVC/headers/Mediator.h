@@ -10,11 +10,12 @@
 #define Mediator_h
 
 #import <Foundation/Foundation.h>
+#import "Notifier.h"
 #import "IMediator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Mediator : NSObject <IMediator>
+@interface Mediator : Notifier <IMediator>
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, strong, nullable) id view;

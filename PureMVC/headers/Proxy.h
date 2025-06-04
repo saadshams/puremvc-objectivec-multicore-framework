@@ -10,11 +10,12 @@
 #define Proxy_h
 
 #import <Foundation/Foundation.h>
+#import "Notifier.h"
 #import "IProxy.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Proxy : NSObject <IProxy>
+@interface Proxy : Notifier <IProxy>
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, strong, nullable) id data;

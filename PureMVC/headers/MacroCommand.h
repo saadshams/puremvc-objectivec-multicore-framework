@@ -10,11 +10,12 @@
 #define MacroCommand_h
 
 #import <Foundation/Foundation.h>
+#import "Notifier.h"
 #import "ICommand.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MacroCommand : NSObject <ICommand>
+@interface MacroCommand : Notifier <ICommand>
 
 + (instancetype)command;
 

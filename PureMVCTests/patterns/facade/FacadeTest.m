@@ -24,6 +24,7 @@
 
 - (void)testGetInstance {
     id<IFacade> facade = [Facade getInstance:@"FacadeTestKey1" factory:^(NSString *key) { return [Facade withKey:key]; }];
+    // id<IFacade> facade = [Facade getInstance:@"FacadeTestKey1" factory:^id<IFacade>(NSString *key) { return [Facade withKey:key]; }];
     
     XCTAssertNotNil(facade, @"Expecting instance not nil");
     XCTAssertTrue([(id)facade conformsToProtocol:@protocol(IFacade)], @"Expecting instance implements IFacade");

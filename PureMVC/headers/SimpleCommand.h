@@ -10,12 +10,13 @@
 #define SimpleCommand_h
 
 #import <Foundation/Foundation.h>
+#import "Notifier.h"
 #import "ICommand.h"
 #import "INotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SimpleCommand : NSObject <ICommand>
+@interface SimpleCommand : Notifier <ICommand>
 
 +(instancetype)command;
 

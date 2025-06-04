@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)notifyObservers:(id<INotification>)notification;
 
 
-// todo: delete after extending INotifier:
+// todo: delete
 - (void)sendNotification:(NSString *)notificationName body:(nullable id)body type:(nullable NSString *)type;
 - (void)sendNotification:(NSString *)notificationName;
 - (void)sendNotification:(NSString *)notificationName body:(id)body;
