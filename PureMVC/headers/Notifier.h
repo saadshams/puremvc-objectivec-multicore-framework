@@ -16,8 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol IFacade;
 
-// @class Facade; // didn't need
-
 @interface Notifier : NSObject <INotifier>
     
 @property (nonatomic, weak) id<IFacade>facade;

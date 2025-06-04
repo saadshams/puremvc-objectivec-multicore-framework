@@ -10,11 +10,12 @@
 #define ICommand_h
 
 #import <Foundation/Foundation.h>
+#import "INotifier.h"
 #import "INotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol ICommand
+@protocol ICommand <INotifier>
 
 - (void)execute:(id<INotification>)notification;
 

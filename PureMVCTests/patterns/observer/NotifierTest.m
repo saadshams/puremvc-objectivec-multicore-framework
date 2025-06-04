@@ -31,7 +31,7 @@
 }
 
 - (void)testRegisterCommandAndSendNotification {
-    id<INotifier> notifier = [[Notifier alloc] init];
+    Notifier *notifier = [[Notifier alloc] init];
     [notifier initializeNotifier:@"NotifierTestKey2"];
     
     [[notifier facade] registerCommand:@"NotifierTestNote" factory:^id<ICommand> { return [NotifierTestCommand command]; }];

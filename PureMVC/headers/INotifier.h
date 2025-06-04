@@ -10,7 +10,6 @@
 #define INotifier_h
 
 #import <Foundation/Foundation.h>
-//#import "IFacade.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol INotifier
 
-- (nullable id<IFacade>)facade;
 - (void)initializeNotifier:(NSString *)key;
 
 - (void)sendNotification:(NSString *)notificationName body:(nullable id)body type:(nullable NSString *)type;

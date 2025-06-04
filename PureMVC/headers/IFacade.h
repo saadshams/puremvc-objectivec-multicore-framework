@@ -10,6 +10,7 @@
 #define IFacade_h
 
 #import <Foundation/Foundation.h>
+#import "INotifier.h"
 #import "ICommand.h"
 #import "IProxy.h"
 #import "IMediator.h"
@@ -17,7 +18,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol IFacade
+@protocol IFacade <INotifier>
 
 - (void)registerCommand:(NSString *)notificationName factory:(id<ICommand> (^)(void))factory;
 - (BOOL)hasCommand:(NSString *)notificationName;
@@ -34,13 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable id<IMediator>)removeMediator:(NSString *)mediatorName;
 
 - (void)notifyObservers:(id<INotification>)notification;
-
-
-// todo: delete
-- (void)sendNotification:(NSString *)notificationName body:(nullable id)body type:(nullable NSString *)type;
-- (void)sendNotification:(NSString *)notificationName;
-- (void)sendNotification:(NSString *)notificationName body:(id)body;
-- (void)sendNotification:(NSString *)notificationName type:(NSString *)type;
 
 @end
 

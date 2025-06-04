@@ -10,10 +10,11 @@
 #define IProxy_h
 
 #import <Foundation/Foundation.h>
+#import "INotifier.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol IProxy
+@protocol IProxy <INotifier>
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, strong, nullable) id data;
