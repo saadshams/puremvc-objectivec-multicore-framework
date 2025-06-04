@@ -60,10 +60,11 @@ static void initialize(void) {
     }
     if (self = [super init]) {
         _multitonKey = [key copy];
+        [instanceMap setObject:self forKey:key];
         _commandMap = [NSMutableDictionary dictionary];
         _commandMapQueue = dispatch_queue_create("org.puremvc.controller.proxyMapQueue", DISPATCH_QUEUE_CONCURRENT);
+        [self initializeController];
     }
-    [self initializeController];
     return self;
 }
 

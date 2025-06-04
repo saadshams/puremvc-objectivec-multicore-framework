@@ -58,6 +58,7 @@ static void initialize(void) {
     }
     if (self = [super init]) {
         _multitonKey = [key copy];
+        [instanceMap setObject:self forKey:key];
         _mediatorMap = [NSMutableDictionary dictionary];
         _mediatorMapQueue = dispatch_queue_create("org.puremvc.view.mediatorMapQueue", DISPATCH_QUEUE_CONCURRENT);
         _observerMap = [NSMutableDictionary dictionary];

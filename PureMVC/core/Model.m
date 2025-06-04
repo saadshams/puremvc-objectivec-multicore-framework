@@ -53,6 +53,7 @@ static void initialize(void) {
     }
     if (self = [super init]) {
         _multitonKey = [key copy];
+        [instanceMap setObject:self forKey:key];
         _proxyMap = [NSMutableDictionary dictionary];
         _proxyMapQueue = dispatch_queue_create("org.puremvc.model.proxyMapQueue", DISPATCH_QUEUE_CONCURRENT);
     }
