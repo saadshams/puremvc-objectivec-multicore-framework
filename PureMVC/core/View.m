@@ -77,6 +77,7 @@ static void initialize(void) {
     });
 }
 
+
 - (void)notifyObservers:(id<INotification>)notification {
     __block NSArray<id<IObserver>> *observers = nil;
     dispatch_sync(self.observerMapQueue, ^{
@@ -84,6 +85,7 @@ static void initialize(void) {
         observers = [self.observerMap[notification.name] copy];
     });
     
+    // Notify Observers
     for (id<IObserver> observer in observers) {
         [observer notifyObserver:notification];
     }

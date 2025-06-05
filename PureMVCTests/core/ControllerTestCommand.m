@@ -14,8 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation ControllerTestCommand
 
+/**
+Fabricate a result by multiplying the input by 2
+
+- parameter note: the note carrying the ControllerTestVO
+*/
 - (void)execute:(id<INotification>)notification {
     ControllerTestVO *vo = notification.body;
+    
+    // Fabricate a result
     vo.result = 2 * vo.input;
 }
 
