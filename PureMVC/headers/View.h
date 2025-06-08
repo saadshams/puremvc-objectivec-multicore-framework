@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)removeView:(NSString *)key;
 + (instancetype) withKey:(NSString *)key;
 
+/**
+ Initialize the  `View` instance.
+ */
 - (instancetype) initWithKey:(NSString *)key;
 
 @end

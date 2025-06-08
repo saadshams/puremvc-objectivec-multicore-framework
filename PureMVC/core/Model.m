@@ -93,13 +93,20 @@ Factory method `Model.getInstance( multitonKey )`
 @throws Error if instance for this Multiton key instance has already been constructed
 */
 - (instancetype)initWithKey:(NSString *)key {
+    // The Multiton Model instanceMap
     if (instanceMap[key] != nil) {
+        // Message constant
         [NSException raise:@"ModelAlreadyExistsException" format:@"A Model instance already exists for key '%@'.", key];
     }
     if (self = [super init]) {
         _multitonKey = [key copy];
         [instanceMap setObject:self forKey:key];
+        
+        // Mapping of proxyNames to IProxy instances
         _proxyMap = [NSMutableDictionary dictionary];
+        
+        // Concurrent queue for proxyMap
+        // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
         _proxyMapQueue = dispatch_queue_create("org.puremvc.model.proxyMapQueue", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;

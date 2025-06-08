@@ -11,12 +11,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+A base `IObserver` implementation.
+
+An `Observer` is an object that encapsulates information
+about an interested object with a method that should
+be called when a particular `INotification` is broadcast.
+
+In PureMVC, the `Observer` class assumes these responsibilities:
+
+* Encapsulate the notification (callback) method of the interested object.
+* Encapsulate the notification context (this) of the interested object.
+* Provide methods for setting the notification method and context.
+* Provide a method for notifying the interested object.
+
+`@see org.puremvc.swift.multicore.core.View View`
+
+`@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
+*/
 @implementation Observer
 
 + (instancetype)withNotify:(nullable SEL)notify context:(nullable id)context {
     return [[self alloc] initWithNotify:notify context:context];
 }
 
+/**
+Constructor.
+
+The notification method on the interested object should take
+one parameter of type `INotification`
+
+- parameter notifyMethod: the notification method of the interested object
+- parameter notifyContext: the notification context of the interested object
+*/
 - (instancetype)initWithNotify:(nullable SEL)notify context:(nullable id)context {
     if (self = [super init]) {
         _notify = notify;
@@ -25,6 +52,11 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
+/**
+Notify the interested object.
+
+- parameter notification: the `INotification` to pass to the interested object's notification method.
+*/
 - (void)notifyObserver:(id<INotification>)notification {
     if (self.notify && [self.context respondsToSelector:self.notify]) {
         // Suppress "performSelector may cause leak" warning
@@ -35,6 +67,12 @@ NS_ASSUME_NONNULL_BEGIN
     }
 }
 
+/**
+Compare an object to the notification context.
+
+- parameter object: the object to compare
+- returns: boolean indicating if the object and the notification context are the same
+*/
 - (BOOL)compareNotifyContext:(id)object {
     return object == self.context;
 }

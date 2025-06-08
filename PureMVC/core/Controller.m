@@ -77,6 +77,7 @@ registrations.
 */
 + (id<IController>)getInstance:(NSString *)key factory:(id<IController> (^)(NSString *key))factory {
     @synchronized (instanceMap) {
+        // The Multiton Controller instanceMap.
         if (instanceMap[key] == nil) {
             instanceMap[key] = factory(key);
         }
@@ -90,6 +91,7 @@ registrations.
     }
 }
 
+/// The Multiton Key for this app
 + (instancetype)withKey:(NSString *)key {
     return [[Controller alloc] initWithKey:key];
 }
@@ -107,6 +109,7 @@ passing the unique key for this instance
 */
 - (instancetype)initWithKey:(NSString *)key {
     if (instanceMap[key] != nil) {
+        // Message constant
         [NSException raise:@"ControllerAlreadyExistsException" format:@"A Controller instance already exists for key '%@'.", key];
     }
     if (self = [super init]) {

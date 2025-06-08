@@ -100,11 +100,19 @@ Factory method `View.getInstance( multitonKey )`
         [NSException raise:@"ViewAlreadyExistsException" format:@"A View instance already exists for key '%@'.", key];
     }
     if (self = [super init]) {
+        // The Multiton Key for this app
         _multitonKey = [key copy];
+        // The Multiton View instanceMap.
         [instanceMap setObject:self forKey:key];
+        // Mapping of Mediator names to Mediator instances
         _mediatorMap = [NSMutableDictionary dictionary];
+        // Concurrent queue for mediatorMap
+        // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
         _mediatorMapQueue = dispatch_queue_create("org.puremvc.view.mediatorMapQueue", DISPATCH_QUEUE_CONCURRENT);
+        // Mapping of Notification names to Observer lists
         _observerMap = [NSMutableDictionary dictionary];
+        // Concurrent queue for observerMap
+        // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
         _observerMapQueue = dispatch_queue_create("org.puremvc.view.observerMapQueue", DISPATCH_QUEUE_CONCURRENT);
     }
     return self;
