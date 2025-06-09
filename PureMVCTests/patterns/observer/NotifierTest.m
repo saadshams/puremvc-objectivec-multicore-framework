@@ -22,6 +22,9 @@
 
 @implementation NotifierTest
 
+/**
+Tests notifier methods.
+*/
 - (void)testNotifier {
     id<INotifier> notifier = [[Notifier alloc] init];
     [notifier initializeNotifier:@"NotifierTestKey1"];

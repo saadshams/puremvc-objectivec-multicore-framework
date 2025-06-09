@@ -13,6 +13,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+A utility class used by FacadeTest.
+
+`@see org.puremvc.swift.multicore.patterns.facade.FacadeTest FacadeTest`
+
+`@see org.puremvc.swift.multicore.patterns.facade.FacadeTestCommand FacadeTestCommand`
+*/
 @interface FacadeTestVO : NSObject
 
 @property (nonatomic, assign, readonly) int input;

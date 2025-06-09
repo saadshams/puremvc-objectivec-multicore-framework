@@ -20,6 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (void) removeModel:(NSString *)key;
 + (instancetype) withKey:(NSString *)key;
 
+/**
+ Initialize the `Model` instance.
+ */
 - (instancetype) initWithKey:(NSString *)key;
 
 @end

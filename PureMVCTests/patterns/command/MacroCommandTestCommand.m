@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MacroCommandTestCommand
 
+/**
+Initialize the MacroCommandTestCommand by adding
+its 2 SubCommands.
+*/
 - (void)initializeMacroCommand {
     [self addSubCommand:^id<ICommand> { return [MacroCommandTestSub1Command command]; } ];
     [self addSubCommand:^id<ICommand> { return [MacroCommandTestSub2Command command]; } ];

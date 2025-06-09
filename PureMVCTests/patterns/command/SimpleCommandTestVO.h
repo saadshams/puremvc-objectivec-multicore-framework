@@ -11,6 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+A utility class used by SimpleCommandTest.
+
+`@see org.puremvc.swift.multicore.patterns.command.SimpleCommandTest SimpleCommandTest`
+
+`@see org.puremvc.swift.multicore.patterns.command.SimpleCommandTestCommand SimpleCommandTestCommand`
+*/
 @interface SimpleCommandTestVO : NSObject
 
 @property (nonatomic) int input;

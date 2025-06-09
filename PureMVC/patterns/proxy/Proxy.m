@@ -11,18 +11,39 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+A base `IProxy` implementation.
+
+In PureMVC, `Proxy` classes are used to manage parts of the
+application's data model.
+
+A `Proxy` might simply manage a reference to a local data object,
+in which case interacting with it might involve setting and
+getting of its data in synchronous fashion.
+
+`Proxy` classes are also used to encapsulate the application's
+interaction with remote services to save or retrieve data, in which case,
+we adopt an asyncronous idiom; setting data (or calling a method) on the
+`Proxy` and listening for a `Notification` to be sent
+when the `Proxy` has retrieved the data from the service.
+
+`@see org.puremvc.swift.multicore.core.Model Model`
+*/
 @implementation Proxy
 
+/// Default proxy name
 + (NSString *)NAME { return @"Proxy"; }
 
 + (instancetype)proxy {
     return [[self alloc] initWithName:[[self class] NAME] data: nil];
 }
 
+/// The proxy name
 + (instancetype)withName:(NSString *)name {
     return [[self alloc] initWithName:name data:nil];
 }
 
+/// The data object
 + (instancetype)withData:(id)data {
     return [[self alloc] initWithName:[[self class] NAME] data:nil];
 }
@@ -31,6 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
     return [[self alloc] initWithName:name data:data];
 }
 
+/// Constructor
 - (instancetype)initWithName:(nullable NSString *)name data:(nullable id)data {
     if (self = [super init]) {
         _name = (name == nil) ? [[self class] NAME] : [name copy];
@@ -39,10 +61,12 @@ NS_ASSUME_NONNULL_BEGIN
     return self;
 }
 
+/// Called by the Model when the Proxy is registered
 - (void)onRegister {
     
 }
 
+/// Called by the Model when the Proxy is removed
 - (void)onRemove {
     
 }

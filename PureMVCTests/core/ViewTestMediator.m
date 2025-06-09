@@ -13,9 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation ViewTestMediator
 
+/**
+The Mediator name
+*/
 + (NSString *)NAME { return @"ViewTestMediator"; }
 
 - (NSArray<NSString *> *)listNotificationInterests {
+    // Be sure that the mediator has some Observers created
+    // in order to test removeMediator
     return @[@"ABC", @"DEF", @"GHI"];
 }
 

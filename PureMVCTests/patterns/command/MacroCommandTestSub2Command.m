@@ -14,8 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation MacroCommandTestSub2Command
 
+/**
+Fabricate a result by multiplying the input by itself
+
+- parameter event: the `IEvent` carrying the `MacroCommandTestVO`
+*/
 - (void)execute:(id<INotification>)notification {
     MacroCommandTestVO *vo = [notification body];
+    
+    // Fabricate a result
     vo.result2 = vo.input * vo.input;
 }
 

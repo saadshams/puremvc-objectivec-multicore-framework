@@ -8,7 +8,11 @@
 
 #ifndef ViewTestNotification_h
 #define ViewTestNotification_h
+/**
+A Notification class used by ViewTest.
 
+`@see org.puremvc.swift.multicore.core.view.ViewTest ViewTest`
+*/
 typedef NSString * const ViewTestNote NS_TYPED_EXTENSIBLE_ENUM;
 
 static ViewTestNote NOTE1 = @"Notification1";

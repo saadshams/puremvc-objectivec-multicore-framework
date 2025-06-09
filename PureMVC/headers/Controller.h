@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype) withKey:(NSString *)key;
 
 - (instancetype) initWithKey:(NSString *)key;
+
+/**
+ Initialize the `Controller` instance.
+ */
 - (void)initializeController;
 
 @end

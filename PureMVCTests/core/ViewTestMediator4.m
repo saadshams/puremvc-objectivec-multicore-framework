@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation ViewTestMediator4
 
+/**
+The Mediator name
+*/
 + (NSString *)NAME { return @"ViewTestMediato4"; }
 
 - (void)onRegister {

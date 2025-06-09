@@ -14,9 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation FacadeTestCommand
 
+/**
+Fabricate a result by multiplying the input by 2
+
+- parameter note: the Notification carrying the FacadeTestVO
+*/
 - (void)execute:(id<INotification>)notification {
     FacadeTestVO *vo = notification.body;
     
+    // Fabricate a result
     vo.result = 2 * vo.input;
 }
 

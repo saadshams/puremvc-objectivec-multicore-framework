@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation ControllerTestVO
 
+/**
+Constructor.
+
+- parameter input: the number to be fed to the ControllerTestCommand
+*/
 - (instancetype)initWithInput:(int)input {
     if(self = [super init]) {
         _input = input;
