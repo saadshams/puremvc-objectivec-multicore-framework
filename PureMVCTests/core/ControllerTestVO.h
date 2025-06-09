@@ -13,6 +13,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+A utility class used by ControllerTest.
+
+`@see org.puremvc.swift.multicore.core.controller.ControllerTest ControllerTest`
+
+`@see org.puremvc.swift.multicore.core.controller.ControllerTestCommand ControllerTestCommand`
+*/
 @interface ControllerTestVO : NSObject
 
 @property (nonatomic, assign, readonly) int input;

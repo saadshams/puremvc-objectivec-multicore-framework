@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation ViewTestMediator6
 
+/**
+The Mediator base name
+*/
 + (NSString *)NAME { return @"ViewTestMediator6"; }
 
 - (NSArray<NSString *> *)listNotificationInterests {

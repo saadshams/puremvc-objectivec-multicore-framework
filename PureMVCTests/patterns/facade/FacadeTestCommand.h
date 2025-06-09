@@ -14,6 +14,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+A SimpleCommand subclass used by FacadeTest.
+
+`@see org.puremvc.swift.multicore.patterns.facade.FacadeTest FacadeTest`
+
+`@see org.puremvc.swift.multicore.patterns.facade.FacadeTestVO FacadeTestVO`
+*/
 @interface FacadeTestCommand : SimpleCommand
 
 @end
