@@ -68,8 +68,16 @@ registrations.
 */
 @implementation Controller
 
+/**
+`Controller` Multiton Factory method.
+
+- parameter key: multitonKey
+- parameter factory: reference that returns `IController`
+- returns: the Multiton instance
+*/
 + (id<IController>)getInstance:(NSString *)key factory:(id<IController> (^)(NSString *key))factory {
     @synchronized (instanceMap) {
+        // The Multiton Controller instanceMap.
         if (instanceMap[key] == nil) {
             instanceMap[key] = factory(key);
         }
@@ -83,12 +91,25 @@ registrations.
     }
 }
 
+/// The Multiton Key for this app
 + (instancetype)withKey:(NSString *)key {
     return [[Controller alloc] initWithKey:key];
 }
 
+/**
+Constructor.
+
+This `IController` implementation is a Multiton,
+so you should not call the constructor
+directly, but instead call the static Factory method,
+passing the unique key for this instance
+`Controller.getInstance(multitonKey) { key in Controller(key: key) }`
+
+@throws Error if instance for this Multiton key has already been constructed
+*/
 - (instancetype)initWithKey:(NSString *)key {
     if (instanceMap[key] != nil) {
+        // Message constant
         [NSException raise:@"ControllerAlreadyExistsException" format:@"A Controller instance already exists for key '%@'.", key];
     }
     if (self = [super init]) {
@@ -120,9 +141,23 @@ following way:
     self.view = [View getInstance:self.multitonKey factory:^(NSString *key){ return [View withKey:key]; }];
 }
 
+/**
+Register a particular `ICommand` class as the handler
+for a particular `INotification`.
+
+If an `ICommand` has already been registered to
+handle `INotification`s with this name, it is no longer
+used, the new `ICommand` is used instead.
+
+The Observer for the new ICommand is only created if this the
+first time an ICommand has been regisered for this Notification name.
+
+- parameter notificationName: the name of the `INotification`
+- parameter factory: reference that returns `ICommand`
+*/
 - (void)registerCommand:(NSString *)notificationName factory:(id<ICommand> (^)(void))factory {
     dispatch_barrier_sync(self.commandMapQueue, ^{
-        if (self.commandMap[notificationName] == nil) {
+        if (self.commandMap[notificationName] == nil) { // weak reference to Controller (self) to avoid reference cycle with View and Observer
             id<IObserver> observer = [Observer withNotify:@selector(executeCommand:) context: self];
             [self.view registerObserver:notificationName observer:observer];
         }
@@ -130,6 +165,12 @@ following way:
     });
 }
 
+/**
+If an `ICommand` has previously been registered
+to handle a the given `INotification`, then it is executed.
+
+- parameter notification: an `INotification`
+*/
 - (void)executeCommand:(id<INotification>)notification {
     __block id<ICommand> (^factory)(void) = nil;
     dispatch_sync(self.commandMapQueue, ^{
@@ -141,6 +182,12 @@ following way:
     [command execute:notification];
 }
 
+/**
+Check if a Command is registered for a given Notification
+
+- parameter notificationName:
+- returns: whether a Command is currently registered for the given `notificationName`.
+*/
 - (BOOL)hasCommand:(NSString *)notificationName {
     __block BOOL exists = NO;
     dispatch_sync(self.commandMapQueue, ^{
@@ -149,6 +196,11 @@ following way:
     return exists;
 }
 
+/**
+Remove a previously registered `ICommand` to `INotification` mapping.
+
+- parameter notificationName: the name of the `INotification` to remove the `ICommand` mapping for
+*/
 - (void)removeCommand:(NSString *)notificationName {
     dispatch_barrier_sync(self.commandMapQueue, ^{
         if (self.commandMap[notificationName] != nil) {

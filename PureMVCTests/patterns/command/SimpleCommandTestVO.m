@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation SimpleCommandTestVO
 
+/**
+Constructor.
+
+- parameter input: the number to be fed to the SimpleCommandTestCommand
+*/
 - (instancetype) initWithInput:(int)input {
     if (self = [super init]) {
         _input = input;

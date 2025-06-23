@@ -14,8 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @implementation SimpleCommandTestCommand
 
+/**
+Fabricate a result by multiplying the input by 2
+
+- parameter event: the `INotification` carrying the `SimpleCommandTestVO`
+*/
 - (void)execute:(id<INotification>)notification {
     SimpleCommandTestVO *vo = [notification body];
+    
+    //Fabricate a result
     vo.result = 2 * vo.input;
 }
 

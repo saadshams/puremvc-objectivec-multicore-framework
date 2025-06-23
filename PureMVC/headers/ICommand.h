@@ -15,8 +15,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+The interface definition for a PureMVC Command.
+
+`@see org.puremvc.swift.multicore.interfaces INotification
+*/
 @protocol ICommand <INotifier>
 
+/**
+Execute the `ICommand`'s logic to handle a given `INotification`.
+
+- parameter notification: an `INotification` to handle.
+*/
 - (void)execute:(id<INotification>)notification;
 
 @end
