@@ -7,30 +7,35 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IFacade.h"
 #import "Facade.h"
-#import "IController.h"
 #import "Controller.h"
-#import "IModel.h"
 #import "Model.h"
-#import "IView.h"
 #import "View.h"
-#import "INotification.h"
 #import "Notification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Facade()
 
+/// The unique Multiton key for this Facade instance.
 @property (nonatomic, copy, readonly) NSString *multitonKey;
+
+/// Reference to the Controller instance for this Facade.
 @property (nonatomic, strong, nullable) id<IController> controller;
+
+/// Reference to the Model instance for this Facade.
 @property (nonatomic, strong, nullable) id<IModel> model;
+
+/// Reference to the View instance for this Facade.
 @property (nonatomic, strong, nullable) id<IView> view;
 
 @end
 
+// Static dictionary storing all Facade instances keyed by multitonKey.
 static NSMutableDictionary<NSString *, id<IFacade>> *instanceMap = nil;
 
+// Automatically invoked when the module loads.
+// Initializes the static instanceMap dictionary.
 __attribute__((constructor()))
 static void initialize(void) {
     instanceMap = [NSMutableDictionary dictionary];
@@ -89,6 +94,14 @@ instances for the given key.
     }
 }
 
+/**
+ * Creates and returns a new `Facade` instance for the given multiton key.
+ *
+ * This is a convenience constructor that calls `-initWithKey:` internally.
+ *
+ * @param key The unique multiton key identifying the `Facade` instance.
+ * @return A new instance of `Facade` initialized with the given key.
+ */
 + (instancetype)withKey:(NSString *)key {
     return [[Facade alloc] initWithKey:key];
 }
@@ -339,21 +352,38 @@ Keeps us from having to construct new notification
 instances in our implementation code.
 
 - parameter notificationName: the name of the notiification to send
-- parameter body: the body of the notification (
+- parameter body: the body of the notification
 - parameter type: the type of the notification
 */
 - (void)sendNotification:(NSString *)notificationName body:(nullable id)body type:(nullable NSString *)type {
     [self notifyObservers:[Notification withName:notificationName body:body type:type]];
 }
 
+/**
+ * Send an `INotification` with name only.
+ *
+ * @param notificationName The name of the notification to send.
+ */
 -(void)sendNotification:(NSString *)notificationName {
     [self sendNotification:notificationName body:nil type:nil];
 }
 
+/**
+ * Send an `INotification` with a name and body.
+ *
+ * @param notificationName The name of the notification.
+ * @param body The body content of the notification.
+ */
 -(void)sendNotification:(NSString *)notificationName body:(id)body {
     [self sendNotification:notificationName body:body type:nil];
 }
 
+/**
+ * Send an `INotification` with a name and type.
+ *
+ * @param notificationName The name of the notification.
+ * @param type The type string of the notification.
+ */
 -(void)sendNotification:(NSString *)notificationName type:(NSString *)type {
     [self sendNotification:notificationName body:nil type:type];
 }

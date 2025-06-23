@@ -48,6 +48,13 @@ when the `Proxy` has retrieved the data from the service.
     return [[self alloc] initWithName:[[self class] NAME] data:nil];
 }
 
+/**
+ * Creates and returns an instance initialized with the given name and data.
+ *
+ * @param name The name identifier for this instance.
+ * @param data The associated data object.
+ * @return A new instance initialized with the specified name and data.
+ */
 + (instancetype)withName:(NSString *)name data:(id)data {
     return [[self alloc] initWithName:name data:data];
 }

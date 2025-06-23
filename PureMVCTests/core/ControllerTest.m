@@ -7,13 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IController.h"
 #import "Controller.h"
-#import "ICommand.h"
 #import "SimpleCommand.h"
-#import "INotification.h"
 #import "Notification.h"
-#import "IView.h"
 #import "View.h"
 #import "ControllerTestCommand.h"
 #import "ControllerTestCommand2.h"

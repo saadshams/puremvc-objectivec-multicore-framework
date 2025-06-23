@@ -29,11 +29,11 @@ In PureMVC, the `View` class assumes these responsibilities:
 * Providing a method for broadcasting an `INotification`.
 * Notifying the `IObservers` of a given `INotification` when it broadcast.
 
-`@see org.puremvc.swift.multicore.interfaces.IMediator IMediator`
+`@see IMediator`
 
-`@see org.puremvc.swift.multicore.interfaces.IObserver IObserver`
+`@see IObserver`
 
-`@see org.puremvc.swift.multicore.interfaces.INotification INotification`
+`@see INotification`
 */
 @protocol IView
 

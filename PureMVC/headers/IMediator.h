@@ -41,7 +41,7 @@ encapsulating that `IMediator`'s (`handleNotification`) method
 and register it as an Observer for each `INotification` name returned by
 `listNotificationInterests`.
 
-`@see org.puremvc.swift.multicore.interfaces.INotification INotification`
+`@see INotification`
 */
 @protocol IMediator <INotifier>
 

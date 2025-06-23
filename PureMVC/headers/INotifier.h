@@ -30,13 +30,13 @@ for sending `Notifications`, but also eases implementation as these
 classes have frequent `Facade` interactions and usually require
 access to the facade anyway.
 
-`@see org.puremvc.swift.multicore.interfaces.IFacade IFacade`
+`@see IFacade`
 
-`@see org.puremvc.swift.multicore.interfaces.INotification INotification`
+`@see INotification`
 */
-@protocol IFacade;
+@protocol IFacade; // forward ref
 
-@protocol INotifier
+@protocol INotifier // forward ref
 
 /**
 Initialize this INotifier instance.
@@ -61,8 +61,28 @@ notification instances in our implementation code.
 - parameter type: the type of the notification
 */
 - (void)sendNotification:(NSString *)notificationName body:(nullable id)body type:(nullable NSString *)type;
+
+/**
+ * Send a notification with just a name.
+ *
+ * @param notificationName The name of the notification to send.
+ */
 - (void)sendNotification:(NSString *)notificationName;
+
+/**
+ * Send a notification with a name and body.
+ *
+ * @param notificationName The name of the notification to send.
+ * @param body The body of the notification.
+ */
 - (void)sendNotification:(NSString *)notificationName body:(id)body;
+
+/**
+ * Send a notification with a name and type.
+ *
+ * @param notificationName The name of the notification to send.
+ * @param type The type of the notification.
+ */
 - (void)sendNotification:(NSString *)notificationName type:(NSString *)type;
 
 @end

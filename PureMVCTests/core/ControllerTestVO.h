@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A utility class used by ControllerTest.
 
-`@see org.puremvc.swift.multicore.core.controller.ControllerTest ControllerTest`
+`@see ControllerTest`
 
-`@see org.puremvc.swift.multicore.core.controller.ControllerTestCommand ControllerTestCommand`
+`@see ControllerTestCommand`
 */
 @interface ControllerTestVO : NSObject
 

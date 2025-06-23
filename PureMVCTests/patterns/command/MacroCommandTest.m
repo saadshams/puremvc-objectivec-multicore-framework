@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import "ICommand.h"
-#import "INotification.h"
 #import "Notification.h"
 #import "MacroCommandTestCommand.h"
 #import "MacroCommandTestVO.h"

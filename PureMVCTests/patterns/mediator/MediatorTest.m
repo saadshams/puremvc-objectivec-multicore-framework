@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IMediator.h"
 #import "Mediator.h"
 
 @interface MediatorTest : XCTestCase

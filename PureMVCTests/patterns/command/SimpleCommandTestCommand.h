@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A SimpleCommand subclass used by SimpleCommandTest.
 
-`@see org.puremvc.swift.multicore.patterns.command.SimpleCommandTest SimpleCommandTest`
-`@see org.puremvc.swift.multicore.patterns.command.SimpleCommandTestVO SimpleCommandTestVO`
+`@see SimpleCommandTest`
+`@see SimpleCommandTestVO`
 */
 @interface SimpleCommandTestCommand : SimpleCommand
 

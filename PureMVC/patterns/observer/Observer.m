@@ -25,12 +25,19 @@ In PureMVC, the `Observer` class assumes these responsibilities:
 * Provide methods for setting the notification method and context.
 * Provide a method for notifying the interested object.
 
-`@see org.puremvc.swift.multicore.core.View View`
+`@see View`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
+`@see Notification`
 */
 @implementation Observer
 
+/**
+ * Creates and returns an instance initialized with the given notification selector and context.
+ *
+ * @param notify The selector to be called for notification (nullable).
+ * @param context The context object for the notification (nullable).
+ * @return A new instance initialized with the specified notification selector and context.
+ */
 + (instancetype)withNotify:(nullable SEL)notify context:(nullable id)context {
     return [[self alloc] initWithNotify:notify context:context];
 }

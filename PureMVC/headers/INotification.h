@@ -41,9 +41,9 @@ pattern. PureMVC classes need not be related to each other in a
 parent/child relationship in order to communicate with one another
 using `Notification`s.
 
-`@see org.puremvc.swift.multicore.interfaces.IView IView`
+`@see IView`
 
-`@see org.puremvc.swift.multicore.interfaces.IObserver IObserver`
+`@see IObserver`
 */
 @protocol INotification
 

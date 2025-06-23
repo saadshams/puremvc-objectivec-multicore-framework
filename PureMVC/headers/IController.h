@@ -27,9 +27,9 @@ assumes these responsibilities:
 * Creating a new instance of the proper `ICommand` to handle a given `INotification` when notified by the `View`.
 * Calling the `ICommand`'s `execute` method, passing in the `INotification`.
 
-`@see org.puremvc.swift.multicore.interfaces INotification`
+`@see INotification`
 
-`@see org.puremvc.swift.multicore.interfaces ICommand`
+`@see ICommand`
 */
 @protocol IController
 

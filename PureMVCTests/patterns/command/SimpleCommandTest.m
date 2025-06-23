@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ICommand.h"
 #import "SimpleCommand.h"
 #import "Notification.h"
 #import "SimpleCommandTestCommand.h"

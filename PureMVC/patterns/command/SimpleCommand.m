@@ -18,14 +18,19 @@ A base `ICommand` implementation.
 Your subclass should override the `execute`
 method where your business logic will handle the `INotification`.
 
-`@see org.puremvc.swift.multicore.core.Controller Controller`
+`@see Controller`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
+`@see Notification`
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand`
+`@see MacroCommand`
 */
 @implementation SimpleCommand
 
+/**
+ * Convenience constructor for creating a `SimpleCommand`.
+ *
+ * @return A newly initialized `SimpleCommand` instance.
+ */
 + (instancetype)command {
     return [[self alloc] init];
 }

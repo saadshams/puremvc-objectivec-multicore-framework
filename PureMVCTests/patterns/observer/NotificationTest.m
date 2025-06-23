@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "INotification.h"
 #import "Notification.h"
 
 @interface NotificationTest : XCTestCase

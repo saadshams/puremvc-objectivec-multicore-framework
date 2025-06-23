@@ -39,7 +39,7 @@ pattern. PureMVC classes need not be related to each other in a
 parent/child relationship in order to communicate with one another
 using `Notification`s.
 
-`@see org.puremvc.swift.multicore.patterns.observer.Observer Observer`
+`@see Observer`
 *
 */
 @implementation Notification

@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A SimpleCommand subclass used by ControllerTest.
 
-`@see org.puremvc.swift.multicore.core.controller.ControllerTest ControllerTest`
+`@see ControllerTest`
 
-`@see org.puremvc.swift.multicore.core.controller.ControllerTestVO ControllerTestVO`
+`@see ControllerTestVO`
 */
 @interface ControllerTestCommand : SimpleCommand
 

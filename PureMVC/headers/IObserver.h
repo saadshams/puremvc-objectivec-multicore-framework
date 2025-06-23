@@ -44,9 +44,9 @@ Observers can receive `Notification`s by having their
 in an object implementing the `INotification` interface, such
 as a subclass of `Notification`.
 
-`@see org.puremvc.swift.multicore.interfaces.IView IView`
+`@see IView`
 
-`@see org.puremvc.swift.multicore.interfaces.INotification INotification`
+`@see INotification`
 */
 @protocol IObserver
 

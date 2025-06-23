@@ -7,7 +7,6 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IProxy.h"
 #import "Proxy.h"
 
 @interface PureMVCTest : XCTestCase

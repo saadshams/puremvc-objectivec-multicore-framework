@@ -7,11 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IFacade.h"
 #import "Facade.h"
-#import "IProxy.h"
 #import "Proxy.h"
-#import "IMediator.h"
 #import "Mediator.h"
 #import "FacadeTestCommand.h"
 #import "FacadeTestVO.h"

@@ -7,12 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "IController.h"
 #import "Controller.h"
 #import "ICommand.h"
-#import "IObserver.h"
 #import "Observer.h"
-#import "IView.h"
 #import "View.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,7 +19,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// The Multiton Key for this app
 @property (nonatomic, copy, readonly) NSString *multitonKey;
 
+/// Mapping of Notification names to factories that instanties and returns `ICommand` Class instances
 @property (nonatomic, strong) NSMutableDictionary<NSString *, id<ICommand> (^)(void)> *commandMap;
+
+/// Concurrent queue for commandMap
 @property (nonatomic, strong) dispatch_queue_t commandMapQueue;
 
 /// Local reference to View
@@ -30,8 +30,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+// The Multiton Controller instanceMap.
 static NSMutableDictionary<NSString *, id<IController>> *instanceMap = nil;
 
+/// Initializes the global `instanceMap` once per process.
 __attribute__((constructor()))
 static void initialize(void) {
     instanceMap = [NSMutableDictionary dictionary];
@@ -56,15 +58,15 @@ The simplest way is to subclass `Facade`,
 and use its `initializeController` method to add your
 registrations.
 
-`@see org.puremvc.swift.multicore.core.View View`
+`@see View`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Observer Observer`
+`@see Observer`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
+`@see Notification`
 
-`@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand`
+`@see SimpleCommand`
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand`
+`@see MacroCommand`
 */
 @implementation Controller
 
@@ -85,13 +87,25 @@ registrations.
     }
 }
 
-+ (void)removeModel:(NSString *)key {
+/**
+ Remove an IController instance
+
+ - parameter key: of IController instance to remove
+ */
++ (void)removeController:(NSString *)key {
     @synchronized (instanceMap) {
         [instanceMap removeObjectForKey:key];
     }
 }
 
-/// The Multiton Key for this app
+/**
+ * Returns a new `Controller` instance for the given key.
+ *
+ * @param key The unique multiton key.
+ * @return A new `Controller` instance.
+ *
+ * @note Raises an exception if an instance already exists for the key.
+ */
 + (instancetype)withKey:(NSString *)key {
     return [[Controller alloc] initWithKey:key];
 }

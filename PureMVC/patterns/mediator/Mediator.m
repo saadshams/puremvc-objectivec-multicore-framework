@@ -42,6 +42,14 @@ will not have a need to be dynamically named.
     return [[self alloc] initWithName:[[self class] NAME] view:view];
 }
 
+/**
+ * Convenience constructor that creates and returns an instance
+ * initialized with the given name and view.
+ *
+ * @param name The unique name identifier for this instance.
+ * @param view The associated view object.
+ * @return A new instance initialized with the specified name and view.
+ */
 + (instancetype)withName:(NSString *)name view:(id)view {
     return [[self alloc] initWithName:name view:view];
 }

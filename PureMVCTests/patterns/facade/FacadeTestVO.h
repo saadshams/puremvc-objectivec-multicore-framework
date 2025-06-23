@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A utility class used by FacadeTest.
 
-`@see org.puremvc.swift.multicore.patterns.facade.FacadeTest FacadeTest`
+`@see FacadeTest`
 
-`@see org.puremvc.swift.multicore.patterns.facade.FacadeTestCommand FacadeTestCommand`
+`@see FacadeTestCommand`
 */
 @interface FacadeTestVO : NSObject
 

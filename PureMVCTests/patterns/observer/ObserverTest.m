@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IObserver.h"
 #import "Observer.h"
-#import "INotification.h"
 #import "Notification.h"
 
 @interface ObserverTest : XCTestCase

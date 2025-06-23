@@ -8,7 +8,6 @@
 
 #import "IView.h"
 #import "View.h"
-#import "IObserver.h"
 #import "Observer.h"
 #import "IMediator.h"
 
@@ -16,16 +15,27 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface View()
 
+/// The unique key for this Multiton instance.
 @property (nonatomic, copy, readonly) NSString *multitonKey;
+
+/// Mapping of notification names to their list of observers.
 @property (nonatomic, strong) NSMutableDictionary<NSString *, NSMutableArray<id<IObserver>> *> *observerMap;
+
+/// Queue used to synchronize access to `observerMap`.
 @property (nonatomic, strong) dispatch_queue_t observerMapQueue;
+
+/// Mapping of mediator names to their registered `IMediator` instances.
 @property (nonatomic, strong) NSMutableDictionary<NSString *, id<IMediator>> *mediatorMap;
+
+/// Queue used to synchronize access to `mediatorMap`.
 @property (nonatomic, strong) dispatch_queue_t mediatorMapQueue;
 
 @end
 
+/// Multiton registry for storing `View` instances by key.
 static NSMutableDictionary<NSString *, id<IView>> *instanceMap = nil;
 
+/// Initializes the global `View` instance map.
 __attribute__((constructor()))
 static void initialize(void) {
     instanceMap = [NSMutableDictionary dictionary];
@@ -44,11 +54,11 @@ In PureMVC, the `View` class assumes these responsibilities:
 * Providing a method for broadcasting an `INotification`.
 * Notifying the `IObservers` of a given `INotification` when it broadcast.
 
-`@see org.puremvc.swift.multicore.patterns.mediator.Mediator Mediator`
+`@see Mediator`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Observer Observer`
+`@see Observer`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
+`@see Notification`
 */
 @implementation View
 
@@ -79,6 +89,14 @@ Remove an IView instance
     }
 }
 
+/**
+ * Creates and returns a new `View` instance for the given key.
+ *
+ * @param key The multiton key.
+ * @return A new `View` instance.
+ *
+ * @note Raises an exception if an instance already exists for the key.
+ */
 + (instancetype)withKey:(NSString *)key {
     return [[View alloc] initWithKey:key];
 }

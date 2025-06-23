@@ -29,15 +29,15 @@ In PureMVC, the Facade acts as an interface between
 the core MVC actors (Model, View, Controller) and
 the rest of your application.
 
-`@see org.puremvc.swift.multicore.interfaces.IModel IModel`
+`@see IModel`
 
-`@see org.puremvc.swift.multicore.interfaces.IView IView`
+`@see IView`
 
-`@see org.puremvc.swift.multicore.interfaces.IController IController`
+`@see IController`
 
-`@see org.puremvc.swift.multicore.interfaces.ICommand ICommand`
+`@see ICommand`
 
-`@see org.puremvc.swift.multicore.interfaces.INotification INotification`
+`@see INotification`
 */
 @protocol IFacade <INotifier>
 

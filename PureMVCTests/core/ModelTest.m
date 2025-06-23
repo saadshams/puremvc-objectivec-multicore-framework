@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IModel.h"
 #import "Model.h"
-#import "IProxy.h"
 #import "Proxy.h"
 #import "ModelTestProxy.h"
 

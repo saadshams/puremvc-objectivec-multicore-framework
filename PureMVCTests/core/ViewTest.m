@@ -7,11 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "IView.h"
 #import "View.h"
-#import "IObserver.h"
 #import "Observer.h"
-#import "INotification.h"
 #import "Notification.h"
 #import "ViewTestMediator.h"
 #import "ViewTestMediator2.h"

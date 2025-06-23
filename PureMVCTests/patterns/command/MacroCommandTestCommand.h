@@ -17,13 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A MacroCommand subclass used by MacroCommandTest.
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommandTest MacroCommandTest`
+`@see MacroCommandTest`
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommandTestSub1Command MacroCommandTestSub1Command`
+`@see MacroCommandTestSub1Command`
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommandTestSub2Command MacroCommandTestSub2Command`
+`@see MacroCommandTestSub2Command`
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommandTestVO MacroCommandTestVO`
+`@see MacroCommandTestVO`
 */
 @interface MacroCommandTestCommand : MacroCommand
 

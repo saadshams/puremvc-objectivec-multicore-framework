@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Notifier.h"
-#import "IFacade.h"
 #import "Facade.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -45,15 +44,15 @@ The multitonKey is set:
 * on a Mediator is registered with the View
 * on a Proxy is registered with the Model.
 
-`@see org.puremvc.swift.multicore.patterns.proxy.Proxy Proxy`
+`@see Proxy`
 
-`@see org.puremvc.swift.multicore.patterns.facade.Facade Facade`
+`@see Facade`
 
-`@see org.puremvc.swift.multicore.patterns.mediator.Mediator Mediator`
+`@see Mediator`
 
-`@see org.puremvc.swift.multicore.patterns.command.MacroCommand MacroCommand`
+`@see MacroCommand`
 
-`@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand`
+`@see SimpleCommand`
 */
 @implementation Notifier
 
@@ -102,16 +101,33 @@ instances in our implementation code.
     [self sendNotification:notificationName body:body type:type];
 }
 
-- (void)sendNotification:(NSString *)notificationName {
+/**
+ * Send an `INotification` with name only.
+ *
+ * @param notificationName The name of the notification to send.
+ */
+-(void)sendNotification:(NSString *)notificationName {
     [self sendNotification:notificationName body:nil type:nil];
 }
 
-- (void)sendNotification:(NSString *)notificationName body:(id)body {
-    [self sendNotification:notificationName body: body type: nil];
+/**
+ * Send an `INotification` with a name and body.
+ *
+ * @param notificationName The name of the notification.
+ * @param body The body content of the notification.
+ */
+-(void)sendNotification:(NSString *)notificationName body:(id)body {
+    [self sendNotification:notificationName body:body type:nil];
 }
 
-- (void)sendNotification:(NSString *)notificationName type:(NSString *)type {
-    [self sendNotification:notificationName body: nil type:type];
+/**
+ * Send an `INotification` with a name and type.
+ *
+ * @param notificationName The name of the notification.
+ * @param type The type string of the notification.
+ */
+-(void)sendNotification:(NSString *)notificationName type:(NSString *)type {
+    [self sendNotification:notificationName body:nil type:type];
 }
 
 @end

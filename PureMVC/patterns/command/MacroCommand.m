@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MacroCommand()
 
+/// The list of subcommand factory blocks to execute.
 @property (nonatomic, strong) NSMutableArray<id<ICommand> (^)(void)> *subCommands;
 
 @end
@@ -36,14 +37,19 @@ override the `initializeMacroCommand` method,
 calling `addSubCommand` once for each *SubCommand*
 to be executed.
 
-`@see org.puremvc.swift.multicore.core.Controller Controller`
+`@see Controller`
 
-`@see org.puremvc.swift.multicore.patterns.observer.Notification Notification`
+`@see Notification`
 
-`@see org.puremvc.swift.multicore.patterns.command.SimpleCommand SimpleCommand`
+`@see SimpleCommand`
 */
 @implementation MacroCommand
 
+/**
+ * Convenience constructor for creating a `MacroCommand`.
+ *
+ * @return A newly initialized `MacroCommand` instance.
+ */
 + (instancetype)command {
     return [[self alloc] init];
 }
@@ -76,9 +82,9 @@ this:
 
     // Initialize MyMacroCommand
     public func addSubCommand(closure: () -> ICommand) {
-        addSubCommand( { FirstCommand() } );
-        addSubCommand( { SecondCommand() } );
-        addSubCommand { ThirdCommand() }; // or by using a trailing closure
+        addSubCommand( return [FirstCommand command] );
+        addSubCommand( return [SecondCommand command] );
+        addSubCommand( return [ThirdCommand command] );
     }
 
 Note that *SubCommands* may be any closure returning `ICommand`

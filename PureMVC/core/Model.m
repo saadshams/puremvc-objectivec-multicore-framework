@@ -8,19 +8,27 @@
 
 #import <Foundation/Foundation.h>
 #import "Model.h"
+#import "IProxy.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Model()
 
+/// The unique key for this Multiton `Model` instance.
 @property (nonatomic, copy, readonly) NSString *multitonKey;
+
+/// Mapping of proxy names to their registered `IProxy` instances.
 @property (nonatomic, strong) NSMutableDictionary<NSString *, id<IProxy>> *proxyMap;
+
+/// Queue for synchronizing access to `proxyMap`.
 @property (nonatomic, strong) dispatch_queue_t proxyMapQueue;
 
 @end
 
+/// Global map storing `Model` instances by multiton key.
 static NSMutableDictionary<NSString *, id<IModel>> *instanceMap = nil;
 
+/// Initializes the global `instanceMap` once per process.
 __attribute__((constructor))
 static void initialize(void) {
     instanceMap = [NSMutableDictionary dictionary];
@@ -43,9 +51,9 @@ with the `Model`. Typically, you use an
 instances once the `Facade` has initialized the Core
 actors.
 
-`@see org.puremvc.swift.multicore.patterns.proxy.Proxy Proxy`
+`@see Proxy`
 
-`@see org.puremvc.swift.multicore.interfaces.IProxy IProxy`
+`@see IProxy`
 */
 @implementation Model
 
@@ -76,6 +84,14 @@ Remove an IModel instance
     }
 }
 
+/**
+ * Convenience constructor that returns a new `Model` instance for the given key.
+ *
+ * @param key The unique multiton key.
+ * @return A new `Model` instance.
+ *
+ * @note Will raise an exception if an instance already exists for the key.
+ */
 + (instancetype)withKey:(NSString *)key {
     return [[Model alloc] initWithKey:key];
 }
