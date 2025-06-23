@@ -44,11 +44,11 @@ static void initialize(void) {
 /**
 A base Multiton `IFacade` implementation.
 
-`@see org.puremvc.swift.multicore.core.Model Model`
+`@see Model`
 
-`@see org.puremvc.swift.multicore.core.View View`
+`@see View`
 
-`@see org.puremvc.swift.multicore.core.Controller Controller`
+`@see Controller`
 */
 @implementation Facade
 

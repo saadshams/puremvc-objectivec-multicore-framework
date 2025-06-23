@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
  - Provide a method for comparing notification contexts.
  - Provide a method for calling the encapsulated method on the context.
 
- @see org.puremvc.swift.multicore.patterns.observer.Notification Notification
+ @see Notification
  */
 @interface Observer : NSObject <IObserver>
 

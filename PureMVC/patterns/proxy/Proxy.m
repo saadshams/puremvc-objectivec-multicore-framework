@@ -27,7 +27,7 @@ we adopt an asyncronous idiom; setting data (or calling a method) on the
 `Proxy` and listening for a `Notification` to be sent
 when the `Proxy` has retrieved the data from the service.
 
-`@see org.puremvc.swift.multicore.core.Model Model`
+`@see Model`
 */
 @implementation Proxy
 

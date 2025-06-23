@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A base `IMediator` implementation.
 
-`@see org.puremvc.swift.multicore.core.View View`
+`@see View`
 */
 @implementation Mediator
 

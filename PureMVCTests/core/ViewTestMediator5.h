@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
 A Mediator class used by ViewTest.
 
-`@see org.puremvc.swift.core.view.ViewTest ViewTest`
+`@see ViewTest`
 */
 @interface ViewTestMediator5 : Mediator
 
