@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Facade.h"
-#import "Proxy.h"
-#import "Mediator.h"
+#import <PureMVC/PureMVC.h>
 #import "FacadeTestCommand.h"
 #import "FacadeTestVO.h"
 

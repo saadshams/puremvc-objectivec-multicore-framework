@@ -8,7 +8,6 @@
 
 #import "SimpleCommandTestCommand.h"
 #import "SimpleCommandTestVO.h"
-#import "INotification.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

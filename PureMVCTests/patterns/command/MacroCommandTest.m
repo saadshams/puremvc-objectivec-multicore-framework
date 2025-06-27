@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ICommand.h"
-#import "Notification.h"
+#import <PureMVC/PureMVC.h>
 #import "MacroCommandTestCommand.h"
 #import "MacroCommandTestVO.h"
 

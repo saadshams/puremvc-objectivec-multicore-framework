@@ -7,7 +7,6 @@
 //
 
 #import "ViewTestMediator2.h"
-#import "INotification.h"
 #import "ViewTestNotification.h"
 #import "ViewTestVO.h"
 

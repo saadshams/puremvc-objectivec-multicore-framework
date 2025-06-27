@@ -39,7 +39,7 @@ the rest of your application.
 
 `@see INotification`
 */
-@protocol IFacade <INotifier>
+@protocol IFacade
 
 /**
 Register an `ICommand` with the `Controller`.
@@ -140,6 +140,41 @@ construct the notification yourself.
 - parameter notification: the `INotification` to have the `View` notify `Observers` of.
 */
 - (void)notifyObservers:(id<INotification>)notification;
+
+/**
+Send a `INotification`.
+
+Convenience method to prevent having to construct new
+notification instances in our implementation code.
+
+- parameter notificationName: the name of the notification to send
+- parameter body: the body of the notification
+- parameter type: the type of the notification
+*/
+- (void)sendNotification:(NSString *)notificationName body:(nullable id)body type:(nullable NSString *)type;
+
+/**
+ * Send a notification with just a name.
+ *
+ * @param notificationName The name of the notification to send.
+ */
+- (void)sendNotification:(NSString *)notificationName;
+
+/**
+ * Send a notification with a name and body.
+ *
+ * @param notificationName The name of the notification to send.
+ * @param body The body of the notification.
+ */
+- (void)sendNotification:(NSString *)notificationName body:(id)body;
+
+/**
+ * Send a notification with a name and type.
+ *
+ * @param notificationName The name of the notification to send.
+ * @param type The type of the notification.
+ */
+- (void)sendNotification:(NSString *)notificationName type:(NSString *)type;
 
 @end
 

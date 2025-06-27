@@ -7,8 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Model.h"
-#import "Proxy.h"
+#import <PureMVC/PureMVC.h>
 #import "ModelTestProxy.h"
 
 @interface ModelTest : XCTestCase

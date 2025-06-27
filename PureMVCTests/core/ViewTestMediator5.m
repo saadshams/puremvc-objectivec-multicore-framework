@@ -7,7 +7,7 @@
 //
 
 #import "ViewTestMediator5.h"
-#import "INotification.h"
+#import <PureMVC/PureMVC.h>
 #import "ViewTestNotification.h"
 #import "ViewTestVO.h"
 

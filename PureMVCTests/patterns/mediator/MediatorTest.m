@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Mediator.h"
+#import <PureMVC/PureMVC.h>
 
 @interface MediatorTest : XCTestCase
 

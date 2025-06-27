@@ -36,6 +36,7 @@
 		A8095C412DEBB54D00C703AE /* libPureMVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPureMVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8095C8E2DEBBADB00C703AE /* PureMVCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PureMVCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A81889572DED7A44005EDEEA /* objective-c-xcode.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "objective-c-xcode.yml"; sourceTree = "<group>"; };
+		A886472A2E0F5730003D31D2 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		A89E24112DEBEE7A00F08995 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A89E24122DEBEE8C00F08995 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		A89E24132DEBEEAA00F08995 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -64,6 +65,11 @@
 				A8DA79F12DEF895900A7D9C0 /* Exceptions for "PureMVCTests" folder in "PureMVCTests" target */,
 			);
 			path = PureMVCTests;
+			sourceTree = "<group>";
+		};
+		A88647422E0F5AE7003D31D2 /* include */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -95,6 +101,8 @@
 				A89E24132DEBEEAA00F08995 /* LICENSE */,
 				A89E24112DEBEE7A00F08995 /* README.md */,
 				A89E24122DEBEE8C00F08995 /* VERSION */,
+				A886472A2E0F5730003D31D2 /* module.modulemap */,
+				A88647422E0F5AE7003D31D2 /* include */,
 				A8095C432DEBB54D00C703AE /* PureMVC */,
 				A8095C8F2DEBBADB00C703AE /* PureMVCTests */,
 				A8095C422DEBB54D00C703AE /* Products */,
@@ -143,6 +151,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				A8095C432DEBB54D00C703AE /* PureMVC */,
+				A88647422E0F5AE7003D31D2 /* include */,
 			);
 			name = PureMVC;
 			packageProductDependencies = (
@@ -391,7 +400,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/PureMVC/headers";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.puremvc.PureMVCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,7 +415,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/PureMVC/headers";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/include";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.puremvc.PureMVCTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

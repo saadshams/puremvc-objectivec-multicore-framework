@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Notifier.h"
-#import "Facade.h"
-#import "Notification.h"
+#import <PureMVC/PureMVC.h>
 #import "NotifierTestCommand.h"
 #import "NotifierTestVO.h"
 

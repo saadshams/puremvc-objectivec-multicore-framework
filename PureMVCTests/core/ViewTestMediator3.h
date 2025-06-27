@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Mediator.h"
+#import <PureMVC/PureMVC.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

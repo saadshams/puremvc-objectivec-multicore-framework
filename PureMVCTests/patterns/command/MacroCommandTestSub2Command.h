@@ -10,7 +10,7 @@
 #define MacroCommandTestSub2Command_h
 
 #import <Foundation/Foundation.h>
-#import "SimpleCommand.h"
+#import <PureMVC/PureMVC.h>
 
 NS_ASSUME_NONNULL_BEGIN
 

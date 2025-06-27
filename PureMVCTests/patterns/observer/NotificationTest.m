@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Notification.h"
+#import <PureMVC/PureMVC.h>
 
 @interface NotificationTest : XCTestCase
 

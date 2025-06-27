@@ -1,0 +1,13 @@
+//
+//  module.modulemap
+//  PureMVC Objective-C Multicore
+//
+//  Copyright(c) 2025 Saad Shams <saad.shams@puremvc.org>
+//  Your reuse is governed by the BSD 3-Clause License
+//
+
+module PureMVC {
+    umbrella header "include/PureMVC/PureMVC.h"
+
+    export *
+}

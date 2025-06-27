@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ICommand.h"
 #import "MacroCommandTestCommand.h"
 #import "MacroCommandTestSub1Command.h"
 #import "MacroCommandTestSub2Command.h"

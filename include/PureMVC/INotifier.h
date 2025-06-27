@@ -36,7 +36,7 @@ access to the facade anyway.
 */
 @protocol IFacade; // forward ref
 
-@protocol INotifier // forward ref
+@protocol INotifier
 
 /**
 Initialize this INotifier instance.

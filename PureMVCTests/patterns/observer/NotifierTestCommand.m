@@ -7,7 +7,6 @@
 //
 
 #import "NotifierTestCommand.h"
-#import "INotification.h"
 #import "NotifierTestVO.h"
 
 NS_ASSUME_NONNULL_BEGIN

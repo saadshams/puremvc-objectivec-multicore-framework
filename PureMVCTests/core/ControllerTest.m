@@ -7,10 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Controller.h"
-#import "SimpleCommand.h"
-#import "Notification.h"
-#import "View.h"
+#import <PureMVC/PureMVC.h>
 #import "ControllerTestCommand.h"
 #import "ControllerTestCommand2.h"
 #import "ControllerTestVO.h"

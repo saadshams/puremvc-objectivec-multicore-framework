@@ -7,9 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "View.h"
-#import "Observer.h"
-#import "Notification.h"
+#import <PureMVC/PureMVC.h>
 #import "ViewTestMediator.h"
 #import "ViewTestMediator2.h"
 #import "ViewTestMediator3.h"
