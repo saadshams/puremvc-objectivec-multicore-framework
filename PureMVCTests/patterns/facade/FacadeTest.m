@@ -143,7 +143,7 @@ Tests registering, retrieving and removing Mediators via the Facade.
     // Register a mediator, remove it, then try to retrieve it
     id<IFacade> facade = [Facade getInstance:@"FacadeTestKey6" factory:^(NSString *key) { return [Facade withKey:key]; }];
     
-    [facade registerMediator:[Mediator withName:Mediator.NAME view:[[NSObject alloc] init]]];
+    [facade registerMediator:[Mediator withName:Mediator.NAME component:[[NSObject alloc] init]]];
     
     // Retrieve the mediator
     XCTAssertNotNil([facade retrieveMediator:Mediator.NAME], @"Expecting mediator is not nil");
@@ -177,7 +177,7 @@ Tests the hasMediator Method
 - (void)testHasMediator {
     // Register a Mediator
     id<IFacade> facade = [Facade getInstance:@"FacadeTestKey8" factory:^(NSString *key) { return [Facade withKey:key]; }];
-    [facade registerMediator:[Mediator withName:@"facadeHasMediatorTest" view:[[NSObject alloc] init]]];
+    [facade registerMediator:[Mediator withName:@"facadeHasMediatorTest" component:[[NSObject alloc] init]]];
     
     // Assert that the facade?.hasMediator method returns true
     // for that mediator name

@@ -35,10 +35,10 @@ Tests getting the name using Mediator class accessor method.
     id object = [[NSObject alloc] init];
     
     // Create a new Proxy and use accessors to set the proxy name
-    id<IMediator> mediator = [Mediator withName:@"MyMediator" view:object];
+    id<IMediator> mediator = [Mediator withName:@"MyMediator" component:object];
     
     // Test assertions
-    XCTAssertNotNil([mediator view], @"Expecting view not nill");
+    XCTAssertNotNil([mediator component], @"Expecting view not nill");
 }
 
 @end

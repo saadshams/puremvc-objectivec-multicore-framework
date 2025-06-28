@@ -29,17 +29,17 @@ will not have a need to be dynamically named.
 + (NSString *)NAME { return @"Mediator"; }
 
 + (instancetype)mediator {
-    return [[self alloc] initWithName:[[self class] NAME] view:nil];
+    return [[self alloc] initWithName:[[self class] NAME] component:nil];
 }
 
 /// The mediator name
 + (instancetype)withName:(NSString *)name {
-    return [[self alloc] initWithName:name view:nil];
+    return [[self alloc] initWithName:name component:nil];
 }
 
 /// The view component
-+ (instancetype)withView:(id)view {
-    return [[self alloc] initWithName:[[self class] NAME] view:view];
++ (instancetype)withComponent:(id)component {
+    return [[self alloc] initWithName:[[self class] NAME] component:component];
 }
 
 /**
@@ -47,23 +47,23 @@ will not have a need to be dynamically named.
  * initialized with the given name and view.
  *
  * @param name The unique name identifier for this instance.
- * @param view The associated view object.
+ * @param component The associated view object.
  * @return A new instance initialized with the specified name and view.
  */
-+ (instancetype)withName:(NSString *)name view:(id)view {
-    return [[self alloc] initWithName:name view:view];
++ (instancetype)withName:(NSString *)name component:(id)component {
+    return [[self alloc] initWithName:name component:component];
 }
 
 /**
 Constructor.
 
 - parameter name: the mediator name
-- parameter viewComponent: viewComponent instance
+- parameter component: view component instance
 */
-- (instancetype)initWithName:(nullable NSString *)name view:(nullable id)view {
+- (instancetype)initWithName:(nullable NSString *)name component:(nullable id)component {
     if (self = [super init]) {
         _name = (name == nil) ? [[self class] NAME] : [name copy];
-        _view = view;
+        _component = component;
     }
     return self;
 }

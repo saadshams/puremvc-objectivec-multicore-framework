@@ -121,7 +121,7 @@ Tests the hasMediator Method
     id<IView> view = [View getInstance:@"ViewTestKey4" factory:^(NSString *key){ return [View withKey:key]; }];
     
     // Create and register the test mediator
-    id<IMediator> mediator = [Mediator withName:@"hasMediatorTest" view:self];
+    id<IMediator> mediator = [Mediator withName:@"hasMediatorTest" component:self];
     [view registerMediator:mediator];
     
     // Assert that the view?hasMediator method returns true
@@ -143,7 +143,7 @@ Tests registering and removing a mediator
     id<IView> view = [View getInstance:@"ViewTestKey5" factory:^(NSString *key) { return [View withKey:key]; }];
     
     // Create and register the test mediator
-    id<IMediator> mediator = [Mediator withName:@"testing" view:self];
+    id<IMediator> mediator = [Mediator withName:@"testing" component:self];
     [view registerMediator:mediator];
     
     // Remove the component
@@ -165,7 +165,7 @@ Tests that the View callse the onRegister and onRemove methods
     
     ViewTestVO *vo = [[ViewTestVO alloc] init];
     // Create and register the test mediator
-    id<IMediator> mediator = [ViewTestMediator4 withView:vo];
+    id<IMediator> mediator = [ViewTestMediator4 withComponent:vo];
     [view registerMediator:mediator];
     
     // Assert that onRegsiter was called, and the mediator responded by setting our boolean
@@ -187,7 +187,7 @@ Tests successive regster and remove of same mediator.
     
     // Create and register the test mediator,
     // but not so we have a reference to it
-    [view registerMediator:[ViewTestMediator withView:self]];
+    [view registerMediator:[ViewTestMediator withComponent:self]];
     
     // Test that we can retrieve it
     XCTAssertTrue([((NSObject *)[view retrieveMediator:ViewTestMediator.NAME]) isKindOfClass:[ViewTestMediator class]]);
@@ -202,7 +202,7 @@ Tests successive regster and remove of same mediator.
     XCTAssertNil([view removeMediator:ViewTestMediator.NAME], @"Expecing [view retrieveMediator:ViewTestMediator.NAME] doesn't crash");
     
     // Create and register another instance of the test mediator,
-    [view registerMediator:[ViewTestMediator withView:self]];
+    [view registerMediator:[ViewTestMediator withComponent:self]];
     
     XCTAssertTrue([((NSObject *)[view retrieveMediator:ViewTestMediator.NAME]) isKindOfClass:[ViewTestMediator class]]);
     
@@ -223,7 +223,7 @@ Mediator to be notified.
     id<IView> view = [View getInstance:@"ViewTestKey8" factory:^(NSString *key){ return [View withKey:key]; }];
     
     // Create and register the test mediator to be removed.
-    [view registerMediator:[ViewTestMediator2 withView:self]];
+    [view registerMediator:[ViewTestMediator2 withComponent:self]];
     
     ViewTestVO *vo = [[ViewTestVO alloc] init];
     
@@ -261,10 +261,10 @@ that the remaining one still responds.
     id<IView> view = [View getInstance:@"ViewTestKey9" factory:^(NSString *key){ return [View withKey:key]; }];
     
     // Create and register that responds to notifications 1 and 2
-    [view registerMediator:[ViewTestMediator2 withView:self]];
+    [view registerMediator:[ViewTestMediator2 withComponent:self]];
     
     // Create and register that responds to notification 3
-    [view registerMediator:[ViewTestMediator3 withView:self]];
+    [view registerMediator:[ViewTestMediator3 withComponent:self]];
     
     ViewTestVO *vo = [[ViewTestVO alloc] init];
     
@@ -312,10 +312,10 @@ be no further response.
     id<IView> view = [View getInstance:@"ViewTestKey10" factory:^(NSString *key){ return [View withKey:key]; }];
     
     // Create and register that responds to notification 5
-    [view registerMediator:[ViewTestMediator5 withView:self]];
+    [view registerMediator:[ViewTestMediator5 withComponent:self]];
     
     // Try to register another instance of that mediator (uses the same NAME constant).
-    [view registerMediator:[ViewTestMediator5 withView:self]];
+    [view registerMediator:[ViewTestMediator5 withComponent:self]];
     
     // Test that the counter is only incremented once (mediator 5's response)
     ViewTestVO *vo = [[ViewTestVO alloc] init];
@@ -355,14 +355,14 @@ themselves.
     ViewTestVO *vo = [[ViewTestVO alloc] init];
     vo.counter = 0;
     
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/1" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/2" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/3" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/4" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/5" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/6" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/7" view:vo]];
-    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/8" view:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/1" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/2" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/3" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/4" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/5" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/6" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/7" component:vo]];
+    [view registerMediator:[ViewTestMediator6 withName:@"ViewTestMediator6/8" component:vo]];
     
     [view notifyObservers:[Notification withName:NOTE6]];
     // XCTAssertTrue(vo.counter == 8, @"Expecting vo.counter == 8");

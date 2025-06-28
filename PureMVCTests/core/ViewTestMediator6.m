@@ -28,7 +28,7 @@ The Mediator base name
 }
 
 - (void)onRemove {
-    ((ViewTestVO *)self.view).counter++;
+    ((ViewTestVO *)self.component).counter++;
 }
 
 @end

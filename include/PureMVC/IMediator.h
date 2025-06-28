@@ -48,7 +48,7 @@ and register it as an Observer for each `INotification` name returned by
 /// Get the `IMediator` instance name
 @property (nonatomic, copy, readonly) NSString *name;
 /// Get or set the `IMediator`'s view component.
-@property (nonatomic, strong, nullable) id view;
+@property (nonatomic, strong, nullable) id component;
 
 /// Called by the View when the Mediator is registered
 - (void)onRegister;

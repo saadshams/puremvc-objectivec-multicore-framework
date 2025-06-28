@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString *name;
 
 /// The view component associated with this `Mediator`.
-@property (nonatomic, strong, nullable) id view;
+@property (nonatomic, strong, nullable) id component;
 
 /**
  Returns the default name used for this `Mediator`.
@@ -55,28 +55,28 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Factory method to create a `Mediator` with a view component.
 
- @param view The view component to associate with the `Mediator`.
+ @param component The view component to associate with the `Mediator`.
  @return A new `Mediator` instance.
  */
-+ (instancetype)withView:(id)view;
++ (instancetype)withComponent:(id)component;
 
 /**
  Factory method to create a `Mediator` with both name and view.
 
  @param name The name of the `Mediator`.
- @param view The view component to associate with the `Mediator`.
+ @param component The view component to associate with the `Mediator`.
  @return A new `Mediator` instance.
  */
-+ (instancetype)withName:(NSString *)name view:(id)view;
++ (instancetype)withName:(NSString *)name component:(id)component;
 
 /**
  Designated initializer.
 
  @param name The name of the `Mediator`. If `nil`, the default name will be used.
- @param view The view component to associate with the `Mediator`.
+ @param component The view component to associate with the `Mediator`.
  @return An initialized `Mediator` instance.
  */
-- (instancetype)initWithName:(nullable NSString *)name view:(nullable id)view;
+- (instancetype)initWithName:(nullable NSString *)name component:(nullable id)component;
 
 @end
 

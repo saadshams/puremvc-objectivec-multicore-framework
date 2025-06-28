@@ -19,11 +19,11 @@ The Mediator name
 + (NSString *)NAME { return @"ViewTestMediato4"; }
 
 - (void)onRegister {
-    ((ViewTestVO *)self.view).onRegisterCalled = YES;
+    ((ViewTestVO *)self.component).onRegisterCalled = YES;
 }
 
 - (void)onRemove {
-    ((ViewTestVO *)self.view).onRemoveCalled = YES;
+    ((ViewTestVO *)self.component).onRemoveCalled = YES;
 }
 
 @end
