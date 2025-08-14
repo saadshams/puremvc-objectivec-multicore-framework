@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import <PureMVC/PureMVC.h>
 
-@interface PureMVCTest : XCTestCase
+@interface ProxyTest : XCTestCase
 
 @end
 
-@implementation PureMVCTest
+@implementation ProxyTest
 
 /**
 Tests getting the name using Proxy class accessor method. Setting can only be done in constructor.
