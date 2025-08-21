@@ -10,8 +10,8 @@
 #define SimpleCommand_h
 
 #import <Foundation/Foundation.h>
-#import "Notifier.h"
 #import "ICommand.h"
+#import "Notifier.h"
 #import "INotification.h"
 
 NS_ASSUME_NONNULL_BEGIN

@@ -34,22 +34,37 @@ when the `Proxy` has retrieved the data from the service.
 /// Default proxy name
 + (NSString *)NAME { return @"Proxy"; }
 
+/**
+ * Convenience constructor that creates and returns a Proxy instance
+ *
+ * @return A new instance initialized with the default name.
+ */
 + (instancetype)proxy {
     return [[self alloc] initWithName:[[self class] NAME] data: nil];
 }
 
-/// The proxy name
+/**
+ * Convenience constructor that creates and returns an instance initialized with the given name
+ *
+ * @param name The name identifier for this instance.
+ * @return A new instance initialized with the specified name.
+ */
 + (instancetype)withName:(NSString *)name {
     return [[self alloc] initWithName:name data:nil];
 }
 
-/// The data object
+/**
+ * Convenience constructor that creates and returns an instance initialized with the given data.
+ *
+ * @param data The associated data object.
+ * @return A new instance initialized with the specified data.
+ */
 + (instancetype)withData:(id)data {
     return [[self alloc] initWithName:[[self class] NAME] data:nil];
 }
 
 /**
- * Creates and returns an instance initialized with the given name and data.
+ * Convenience constructor that creates and returns an instance initialized with the given name and data.
  *
  * @param name The name identifier for this instance.
  * @param data The associated data object.

@@ -10,8 +10,8 @@
 #define Mediator_h
 
 #import <Foundation/Foundation.h>
-#import "Notifier.h"
 #import "IMediator.h"
+#import "Notifier.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -44,23 +44,38 @@ using `Notification`s.
 */
 @implementation Notification
 
-/// The name of the notification instance
+/**
+ Creates a new `Notification` instance with the given name.
+
+- parameter name: name of the `Notification` instance. (required)
+*/
 + (instancetype)withName:(NSString *)name {
     return [[self alloc] initWithName:name body:nil type:nil];
 }
 
-/// The body of the notification instance
+/**
+ Creates a new `Notification` instance with the given name and body.
+
+- parameter name: name of the `Notification` instance. (required)
+- parameter body: the `Notification` body. (optional)
+*/
 + (instancetype)withName:(NSString *)name body:(id)body {
     return [[self alloc] initWithName:name body:body type:nil];
 }
 
-/// The type of the notification instance
+/**
+ Creates a new `Notification` instance with the given name, body and type.
+
+- parameter name: name of the `Notification` instance. (required)
+- parameter body: the `Notification` body. (optional)
+- parameter type: the type of the `Notification` (optional)
+*/
 + (instancetype)withName:(NSString *)name body:(id)body type:(NSString *)type {
     return [[self alloc] initWithName:name body:body type:type];
 }
 
 /**
-Constructor.
+ Creates a new `Notification` instance with the given name, body and type.
 
 - parameter name: name of the `Notification` instance. (required)
 - parameter body: the `Notification` body. (optional)

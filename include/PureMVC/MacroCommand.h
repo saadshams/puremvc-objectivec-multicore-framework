@@ -10,8 +10,8 @@
 #define MacroCommand_h
 
 #import <Foundation/Foundation.h>
-#import "Notifier.h"
 #import "ICommand.h"
+#import "Notifier.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

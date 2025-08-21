@@ -10,8 +10,8 @@
 #define Proxy_h
 
 #import <Foundation/Foundation.h>
-#import "Notifier.h"
 #import "IProxy.h"
+#import "Notifier.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
