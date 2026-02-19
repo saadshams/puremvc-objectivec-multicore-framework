@@ -6,8 +6,8 @@
 //  Your reuse is governed by the BSD 3-Clause License
 //
 
-module PureMVC {
-    umbrella header "include/PureMVC/PureMVC.h"
-
+framework module PureMVC {
+    umbrella header "PureMVC/PureMVC.h"
     export *
+    module * { export * }
 }

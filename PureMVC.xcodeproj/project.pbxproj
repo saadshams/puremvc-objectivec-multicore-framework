@@ -36,7 +36,6 @@
 		A8095C412DEBB54D00C703AE /* libPureMVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPureMVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8095C8E2DEBBADB00C703AE /* PureMVCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PureMVCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A81889572DED7A44005EDEEA /* objective-c-xcode.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "objective-c-xcode.yml"; sourceTree = "<group>"; };
-		A886472A2E0F5730003D31D2 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		A89E24112DEBEE7A00F08995 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A89E24122DEBEE8C00F08995 /* VERSION */ = {isa = PBXFileReference; lastKnownFileType = text; path = VERSION; sourceTree = "<group>"; };
 		A89E24132DEBEEAA00F08995 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -101,7 +100,6 @@
 				A89E24132DEBEEAA00F08995 /* LICENSE */,
 				A89E24112DEBEE7A00F08995 /* README.md */,
 				A89E24122DEBEE8C00F08995 /* VERSION */,
-				A886472A2E0F5730003D31D2 /* module.modulemap */,
 				A88647422E0F5AE7003D31D2 /* include */,
 				A8095C432DEBB54D00C703AE /* PureMVC */,
 				A8095C8F2DEBBADB00C703AE /* PureMVCTests */,
@@ -190,7 +188,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					A8095C402DEBB54D00C703AE = {
 						CreatedOnToolsVersion = 16.4;
@@ -315,6 +313,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -369,6 +368,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
